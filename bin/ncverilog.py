@@ -86,6 +86,8 @@ class ncverilog(sim_tool.sim_tool):
         if self.opts.xilinx:
             print "NCVERILOG XILINX\n"
             f.write("+libext+.v\n")
+            ## append a switch so the sim has a define for XILINX
+            self.switch.append("XILINX")
             xilinx = os.getenv("XILINX")
             f.write("-y " + xilinx + "/verilog/src/unisims/\n")
             f.write("-y " + xilinx + "/verilog/src/simprims/\n")
@@ -101,6 +103,9 @@ class ncverilog(sim_tool.sim_tool):
 
         if self.opts.altera:
             print "NCVERILOG ALTERA\n"
+            ## add a define for ALTERA so the sims knows what it is running
+            self.switch.append("ALTERA")
+            
             altera = os.getenv("ALTERA")
             modelsim = os.getenv("MODELSIM")
 
@@ -116,6 +121,9 @@ class ncverilog(sim_tool.sim_tool):
                 f.write(root+i.strip("'") +"\n")
 
         if self.opts.asic:
+            ## add a define for ASIC so the sims knows what it is running
+            self.switch.append("ASIC")
+            
             for i in self.cfg.asic.include_dirs:
                 f.write("+incdir+"+root+i+"\n")
 
