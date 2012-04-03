@@ -1,0 +1,150 @@
+;; *********************************************************************
+;; $Header:$
+;; $Author:$
+;; $Date:$
+;; $Revision:$
+;; $State:$
+;; *********************************************************************
+
+;; *********************************************************************
+;; Register and other definitions.  In C code this would all go in some header file
+;; *********************************************************************
+
+	CONSTANT UART_BAUD_CONTROL,      00
+	CONSTANT UART_BAUD_COUNT,        01
+	CONSTANT UART_BAUD_STATUS,       02
+	CONSTANT UART_TX_DATA,           03
+	CONSTANT UART_TX_CONTROL,        04
+	CONSTANT UART_FIFO_STATUS,       05
+	CONSTANT UART_RX_DATA,           06
+
+	CONSTANT INT_MASK,               1B
+	CONSTANT INT_STATUS,             1C
+	CONSTANT INT_CLEAR,              1D
+	
+
+	CONSTANT SIM_STATUS,             FF
+
+	;; Address of variables in Scratch Memory
+	constant byte_counter,           00
+	
+	;; Named registers
+	namereg sC, uart_tx_reg
+	namereg sD, uart_rx_reg
+	namereg sE, interrupt_byte
+	namereg sF, task_byte	
+
+;; *********************************************************************
+;; Start is the beginning of the program, at POR we come here.
+;; *********************************************************************
+	
+Start:
+	call UART_init
+	call INT_init
+	load s0, 0
+	store s0, byte_counter
+	
+	;; Signal the test bench to start sending characters
+	load s0, 01
+	output s0, SIM_STATUS
+	
+;; Loop is the main "executive".  It will check the task_byte to see if any
+;; bits are set.  Each bit corresponds to a specific task to perform
+Loop:		
+	compare interrupt_byte, 00
+	jump Z, Loop
+
+	;; Must have gotten an interrupt, first clear it out		
+	load interrupt_byte, 00
+	input s2, UART_FIFO_STATUS
+	and s2, 04
+	jump NZ, Loop		; not a buffer_data_present interrupt, back to LOOP
+
+	fetch s2, byte_counter
+	add s2, 01
+	store s2, byte_counter
+
+	compare s2, 05		; did we get all the characters?
+	jump NZ, Loop
+	
+	compare uart_rx_reg, 61
+	jump NZ, SIM_FAIL
+	call SIM_PASS
+
+
+;;; ****************************************************************************
+;;; Interrupt Initialization -- Enable the interrupts
+;;; ****************************************************************************
+INT_init:
+	;; Turn on interrupts
+	ENABLE INTERRUPT
+	
+	return	
+		
+;;; ****************************************************************************
+;;; UART Initialization
+;;; ****************************************************************************	
+UART_init:
+	;; Set baud rate and turn on baud rate generator
+	load s0, 51
+	output s0, UART_BAUD_COUNT
+	load s0, 80
+	output s0, UART_BAUD_CONTROL
+		
+	;; Unmask lower 2 interrupts for UART TX and UART RX
+	load s0, FC
+	output s0, INT_MASK  	
+		
+	return
+
+;; *********************************************************************
+;; UART TX BYTE  -- called when a character is to be sent from the UART
+;; *********************************************************************
+UART_TX_BYTE:
+	;; read the fifo status
+	input s0, UART_FIFO_STATUS
+
+	;; mask off all other bits except tx fifo full
+	;; if not zero, then the bit is set and the FIFO is full
+	;; so go back to the top of the function and try again
+	and s0, 01
+	jump NZ, UART_TX_BYTE
+
+	;; TX fifo is NOT full, so push another byte into it
+	output uart_tx_reg, UART_TX_DATA
+	return				
+
+	
+;;; ****************************************************************************
+;;; SIM_PASS:	called when a simulation has passed, let the test bench know this
+;;;		through the SIM_STATUS register and sit here forever!
+;;; ****************************************************************************	
+SIM_PASS:
+	load s0, 40
+	output s0, SIM_STATUS
+	jump Z, SIM_PASS
+
+;;; ****************************************************************************
+;;; SIM_FAIL:	called when a simulation has failed, let the test bench know this
+;;;		through the SIM_STATUS register and sit here forever!
+;;; ****************************************************************************
+SIM_FAIL:
+	load s0, 80
+	output s0, SIM_STATUS
+	jump Z, SIM_FAIL
+	
+;; *********************************************************************
+;; ISR is the real Interrupt Service Routine.  When the interrupt line
+;; goes high we come here
+;; *********************************************************************		
+ISR:
+	input s0, INT_STATUS
+	output s0, INT_CLEAR
+	
+	input uart_rx_reg, UART_RX_DATA	; read the byte of data
+	load interrupt_byte, 01
+	returni ENABLE	
+			
+	ADDRESS 3FF
+	jump ISR
+	

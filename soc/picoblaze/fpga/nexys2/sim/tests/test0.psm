@@ -1,0 +1,33 @@
+;; *********************************************************************
+;; Register and other definitions.  In C code this would all go in some header file
+;; *********************************************************************
+	
+	;; Named registers
+	namereg sE, interrupt_byte
+
+;; *********************************************************************
+;; Start is the beginning of the program, at POR we come here.
+;; *********************************************************************
+	
+Start:
+	load interrupt_byte, 00
+	
+;; Loop is the main "executive".  It will check the task_byte to see if any
+;; bits are set.  Each bit corresponds to a specific task to perform
+Loop:		
+	compare interrupt_byte, 00
+	jump Z, Loop
+
+
+	
+;; *********************************************************************
+;; ISR is the real Interrupt Service Routine.  When the interrupt line
+;; goes high we come here
+;; *********************************************************************		
+ISR:
+	returni ENABLE	
+			
+	ADDRESS 3FF
+	jump ISR
+	
+
