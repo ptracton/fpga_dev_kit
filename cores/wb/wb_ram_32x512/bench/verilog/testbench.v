@@ -114,9 +114,14 @@ module testbench;
 	input  [31:0] 	e;	
 	output [31:0] 	d;
 	begin
-	    `TB.wb_master.wb_rd1({21'b0, a}, s, read_word);
-	    d = read_word;	    
-	    #3 if(read_word !== e)
+	    #3 `TB.wb_master.wb_rd1({21'b0, a}, s, read_word);
+	    d = read_word;	
+`ifdef ALTERA    
+	   if(read_word != e)
+`else
+	  if(read_word !== e)
+`endif
+			       
 	      begin
 		  $display("FAIL: READ ADDR 0x%x DATA 0x%x EXPECTED 0x%x @ %d", a, read_word, e, $time);
 		  `TB.thread_fail <= 1'b1;

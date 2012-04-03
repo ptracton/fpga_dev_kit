@@ -199,9 +199,11 @@ if __name__ == '__main__':
     for i in test_list:
         for tool in tools_list:
             for tech in technology_list:
-                new_test = test_case.test_case(test_name=i, tool=tools[tool], tech=technology[tech], coverage=opts.coverage)
-                test_cases.append(new_test)
-                del new_test
+                ## Icarus always fails altera since it can not correctly parse the altera supplied megafunctions library
+                if not ((technology[tech] == "altera") and (tools[tool] =="icarus")):
+                    new_test = test_case.test_case(test_name=i, tool=tools[tool], tech=technology[tech], coverage=opts.coverage)
+                    test_cases.append(new_test)
+                    del new_test
                 
 
     reg_log = open('regression_log.txt', 'w')

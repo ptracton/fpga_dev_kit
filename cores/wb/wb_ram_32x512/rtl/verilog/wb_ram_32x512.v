@@ -8,7 +8,7 @@
 // Update Count    : 0
 // Status          : Unknown, Use with caution!
 
-
+`include "timescale.v"
 module wb_ram_32x512(
 		     input wire clk_i,
 		     input wire rst_i,
@@ -20,7 +20,7 @@ module wb_ram_32x512(
 		     input wire stb_i,
 		     input wire [3:0] sel_i,
 		     
-		     output reg ack_o,
+		     output wire ack_o,
 		     output wire [31:0] data_o
 		     );
     
@@ -29,54 +29,108 @@ module wb_ram_32x512(
     // Shift the address over by 2 bits to word align the data
     //
     wire [10:0] 			address = addr_i >> 2;
-    
+ 
     //
     // Write data to the SRAMS, use a mux to select which bank gets the new
     // data and which ones hold their data
     //
-    wire [31:0] 			wr_data;
+   wire [31:0] 				wr_data;
+   
+   assign 				wr_data[31:24] = sel_i[3] ? data_i[31:24] : data_o[31:24];
+   assign 				wr_data[23:16] = sel_i[2] ? data_i[23:16] : data_o[23:16];
+   assign 				wr_data[15: 8] = sel_i[1] ? data_i[15: 8] : data_o[15: 8];
+   assign 				wr_data[ 7: 0] = sel_i[0] ? data_i[ 7: 0] : data_o[ 7: 0];
+  
+   //
+   // Acknowledge memory cycle so the master knows it is finished
+   //
+   reg 					ack_we;
+   reg 					ack_re;   
+   assign 				ack_o = ack_re | ack_we;
+   
+   // 
+   // Write acknowledge 
+   // 
+   always @ (negedge clk_i) 
+     if (rst_i) 
+       ack_we <= 1'b0; 
+     else 
+       if (cyc_i & stb_i & we_i & ~ack_we) 
+	 ack_we <= #1 1'b1; 
+       else 
+	 ack_we <= #1 1'b0; 
+   
+   // 
+   // read acknowledge 
+   // 
+   always @ (posedge clk_i) 
+	if (rst_i) 
+	  ack_re <= 1'b0; 
+	else 
+	  if (cyc_i & stb_i & ~we_i & ~ack_re) 
+	    ack_re <= #1 1'b1; 
+	  else 
+	    ack_re <= #1 1'b0; 
+   
     
-    assign wr_data[31:24] = sel_i[3] ? data_i[31:24] : data_o[31:24];
-    assign wr_data[23:16] = sel_i[2] ? data_i[23:16] : data_o[23:16];
-    assign wr_data[15: 8] = sel_i[1] ? data_i[15: 8] : data_o[15: 8];
-    assign wr_data[ 7: 0] = sel_i[0] ? data_i[ 7: 0] : data_o[ 7: 0];
     
-    //
-    // Acknowledge memory cycle so the master knows it is finished
-    //
-    always @ (posedge clk_i)
-      if (rst_i)
-	ack_o <= 1'b0;
-     else
-       if (!ack_o) 
-	 begin
-	     if (cyc_i & stb_i)
-	       ack_o <= 1'b1; 
-	 end  
-       else
-	 if (sel_i != 4'b1111) 
-	   ack_o <= 1'b0;
-    
-    
-    //
+   //
     // Xilinx RAMB memories
     //
 `ifdef XILINX
     initial $display("XILINX WB 32x512 RAM");
-    wire  enable = |( sel_i & {4{cyc_i & stb_i}}); 
- 
 
-    RAMB16_S36  RAMB16_S36_inst (
-				 .DO(data_o), // 32-bit Data Output
-				 .DOP( ), // 4-bit parity Output
-				 .ADDR(address), // 9-bit Address Input
-				 .CLK(clk_i), // Clock
-				 .DI(wr_data), // 32-bit Data Input
-				 .DIP(4'b0), // 4-bit parity Input
-				 .EN(enable), // RAM Enable Input
-				 .SSR(rst_i), // Synchronous Set/Reset Input
-				 .WE(we_i) // Write Enable Input
-				 );        
+   wire [3:0] 				enable = 4'hF;   
+   wire [3:0] 				we = sel_i & {4{cyc_i & stb_i & we_i}};
+
+   
+    RAMB16_S9 ram0(
+		   .DO(data_o[7:0]), 
+		   .DOP(), 
+		   .ADDR({3'b0,address}), 
+		   .CLK(clk_i),
+		   .DI(wr_data[7:0]), 
+		   .DIP(1'b0), 
+		   .EN(enable[0]), 
+		   .SSR(rst_i), 
+		   .WE(we[0])
+		   );
+
+    RAMB16_S9 ram1(
+		   .DO(data_o[15:8]), 
+		   .DOP(), 
+		   .ADDR({3'b0,address}), 
+		   .CLK(clk_i),
+		   .DI(wr_data[15:8]), 
+		   .DIP(1'b0), 
+		   .EN(enable[1]), 
+		   .SSR(rst_i), 
+		   .WE(we[1])
+		   );
+
+    RAMB16_S9 ram2(
+		   .DO(data_o[23:16]), 
+		   .DOP(), 
+		   .ADDR({3'b0,address}), 
+		   .CLK(clk_i),
+		   .DI(wr_data[23:16]), 
+		   .DIP(1'b0), 
+		   .EN(enable[2]), 
+		   .SSR(rst_i), 
+		   .WE(we[2])
+		   );
+
+    RAMB16_S9 ram3(
+		   .DO(data_o[31:24]), 
+		   .DOP(), 
+		   .ADDR({3'b0,address}), 
+		   .CLK(clk_i),
+		   .DI(wr_data[31:24]), 
+		   .DIP(1'b0), 
+		   .EN(enable[3]), 
+		   .SSR(rst_i), 
+		   .WE(we[3])
+		   );
 `else 
 
     //
@@ -89,9 +143,9 @@ module wb_ram_32x512(
 				      .aclr0 (rst_i),
 				      .address_a (addr_i),
 				      .clock0 (clk_i),
-				      .data_a (wr_data[7:0]),
+				      .data_a (wr_data),
 				      .wren_a (we_i),
-				      .q_a (data_o[7:0]),
+				      .q_a (data_o),
 				      .aclr1 (1'b0),
 				      .address_b (1'b1),
 				      .addressstall_a (1'b0),
@@ -131,9 +185,6 @@ module wb_ram_32x512(
     always @(posedge clk_i)
       if (we_i & cyc_i & stb_i)
 	memory[address] <= wr_data;    
-
-    wire [31:0] mem40 = memory[9'h040];
-    wire [31:0] mem44 = memory[9'h044];
     
  `endif // !`ifdef ALTERA
 `endif // !`ifdef XILINX
