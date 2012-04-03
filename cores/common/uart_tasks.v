@@ -45,7 +45,7 @@ endtask // uart_write_char
 task uart_read_char;    
     input [7:0] expected;
     reg [7:0] 	read_word;    
-    begin
+      begin
 	@(posedge testbench.uart_int);
 	@(posedge testbench.clk_tb);
 	testbench.uart_master.wb_rd1(32'hFFFF0000,    4'h0, read_word);

@@ -137,7 +137,7 @@ initial
 	pb_uart_tx(i);
 
       $display("Read all data %d", $time);      
-      for (i=0; i<8'h10; i=i+1)
+      for (i=0; i< 8'h10; i=i+1)
 	`UART_READ_CHAR(i);
       
      //
@@ -145,6 +145,7 @@ initial
      //
      repeat(30) @(posedge testbench.clk_tb);
      testbench.thread_pass <= 1'b1;
+     testbench.cpu_pass <= 1'b1;
      
   end // initial begin
         

@@ -1,6 +1,6 @@
 
 `include "timescale.v"
-
+`define LITTLE_ENDIAN
 module testbench;
   
     //
@@ -84,7 +84,9 @@ module testbench;
 		 .dtr_pad_o(), 
 		 .dsr_pad_i(1'b0), 
 		 .ri_pad_i(1'b0), 
-		 .dcd_pad_i(1'b0)
+		 .dcd_pad_i(1'b0),
+
+		 .baud_o()
 		 
 		 );
    

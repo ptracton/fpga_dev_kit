@@ -261,6 +261,7 @@ always @(posedge clk or posedge wb_rst_i)
 		wb_dat_o <= #1 0;
 	else if (re_o)
 		case (wb_sel_is)
+		        4'b0000: wb_dat_o <= #1 {24'b0, wb_dat8_o};
 			4'b0001: wb_dat_o <= #1 {24'b0, wb_dat8_o};
 			4'b0010: wb_dat_o <= #1 {16'b0, wb_dat8_o, 8'b0};
 			4'b0100: wb_dat_o <= #1 {8'b0, wb_dat8_o, 16'b0};
