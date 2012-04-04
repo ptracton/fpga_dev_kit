@@ -141,7 +141,7 @@ module wb_ram_32x512(
 
     altsyncram	altsyncram_component (
 				      .aclr0 (rst_i),
-				      .address_a (addr_i),
+				      .address_a (address),
 				      .clock0 (clk_i),
 				      .data_a (wr_data),
 				      .wren_a (we_i),
