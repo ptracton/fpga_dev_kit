@@ -45,7 +45,7 @@ module wb_ram_32x512(
    // Acknowledge memory cycle so the master knows it is finished
    //
    reg 					ack_we;
-   reg 					ack_re;   
+   reg 					ack_re; 
    assign 				ack_o = ack_re | ack_we;
    
    // 
@@ -79,11 +79,34 @@ module wb_ram_32x512(
     //
 `ifdef XILINX
     initial $display("XILINX WB 32x512 RAM");
+ `ifndef RAMB16_S36
+   
+   initial $display("RAMB16_S36");
 
+   wire  				enable = 1'h1;   
+   wire 				we = |sel_i & cyc_i & stb_i & we_i;   
+
+
+   //
+   // Good for use as a ROM, troublesome for use as a RAM
+   //
+   RAMB16_S36 ram0(
+		   .DO(data_o), 
+		   .DOP(), 
+		   .ADDR(address[8:0]), 
+		   .CLK(clk_i),
+		   .DI(wr_data), 
+		   .DIP(4'b0), 
+		   .EN(enable), 
+		   .SSR(rst_i), 
+		   .WE(we)
+		   );
+   
+ `else
    wire [3:0] 				enable = 4'hF;   
    wire [3:0] 				we = sel_i & {4{cyc_i & stb_i & we_i}};
 
-   
+   initial $display("RAMB16_S9 x 4");
     RAMB16_S9 ram0(
 		   .DO(data_o[7:0]), 
 		   .DOP(), 
@@ -131,6 +154,8 @@ module wb_ram_32x512(
 		   .SSR(rst_i), 
 		   .WE(we[3])
 		   );
+ `endif // !`ifdef RAMB16_S36
+   
 `else 
 
     //
