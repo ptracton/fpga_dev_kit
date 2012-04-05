@@ -106,8 +106,11 @@ class isim(sim_tool.sim_tool):
             for i in self.cfg.xilinx.include_dirs:
                 include += " -i " + root+i.strip("'")
 
-            for i in self.cfg.xilinx.synthesis_files:
-                f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")
+            if not self.opts.timing:
+                for i in self.cfg.xilinx.synthesis_files:
+                    f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")
+            else:
+                f.write("verilog work  "+root+self.cfg.xilinx.netlist+" " + include +"\n")
                 
             for i in self.cfg.xilinx.simulation_files:
                 f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")                
@@ -123,8 +126,9 @@ class isim(sim_tool.sim_tool):
                 include += " -i " + root+i.strip("'")            
             for i in self.cfg.asic.simulation_files:
                 f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")
-            for i in self.cfg.asic.synthesis_files:
-                f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")
+            if not self.opts.timing:                
+                for i in self.cfg.asic.synthesis_files:
+                    f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")
 
         ## If we are running an Altera simulation in a Xilinx tool....... what were we thinking?!?!?
         ## We were thinking that this should be possible, and it is!
@@ -141,8 +145,9 @@ class isim(sim_tool.sim_tool):
                 include += " -i " + root+i.strip("'")
             for i in self.cfg.altera.simulation_files:
                 f.write("verilog work " + root+i.strip("'") +"\n")
-            for i in self.cfg.altera.synthesis_files:
-                f.write("verilog work " + root+i.strip("'") +"\n")
+            if not self.opts.timing:                
+                for i in self.cfg.altera.synthesis_files:
+                    f.write("verilog work " + root+i.strip("'") +"\n")
                 
             ## altera_mf (mega function) is a library that we re-compile for isim use, we get this
             ## from the modelsim installation
@@ -153,20 +158,22 @@ class isim(sim_tool.sim_tool):
         for i in self.cfg.core_simulation_files:
             f.write("verilog work  "+i.strip("'")+" " + include +"\n")
 
-        for i in self.cfg.core_synthesis_files:
-            f.write("verilog work  "+i.strip("'")+" " + include +"\n")
-
+        if not self.opts.timing:
+            for i in self.cfg.core_synthesis_files:
+                f.write("verilog work  "+i.strip("'")+" " + include +"\n")
+                
 
 
         ## write out the generic files that work for ASIC/ALTERA/XILINX
         for i in self.cfg.list_simulation_files:
             f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")
 
-        for i in self.cfg.list_synthesis_files:
-            f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")
+        if not self.opts.timing:
+            for i in self.cfg.list_synthesis_files:
+                f.write("verilog work  "+root+i.strip("'")+" " + include +"\n")
+            for i in verilog_files:            
+                f.write("verilog work " + i.strip("'")+"\n")
 
-        for i in verilog_files:            
-            f.write("verilog work " + i.strip("'")+"\n")
             
         f.close()        
 
@@ -226,7 +233,10 @@ class isim(sim_tool.sim_tool):
         ## For xilixn sims, include the Coregen and Unisim libraries incase they are needed.  If they are not needed
         ## this does not hurt.  Make sure to include work.glbl or the sim will fail to run
         if self.opts.xilinx:
-            libs = "-L xilinxcorelib_ver -L unisims_ver "
+            if self.opts.timing:
+                libs = "-L simprims_ver "
+            else:
+                libs = "-L xilinxcorelib_ver -L unisims_ver "
             glbl = "work.glbl"
             
         ## This runs the fuse command.  In Isim that will generate an .exe file that actually runs the sim
@@ -239,12 +249,18 @@ class isim(sim_tool.sim_tool):
         ##
         if os.path.exists(self.executable):
             if self.opts.gui:
-                gui = "-gui -view ../"+self.test_path+"/"+self.test_name+".wcfg"
+                gui = " -gui -view ../"+self.test_path+"/"+self.test_name+".wcfg "
             else:
                 gui = ""
 
-            ## This runs the simulation.....
-            command = "./"+self.executable+" -tclbatch ../../src/isim.tcl "+gui+ " -log "+ self.sim_log
+            if self.opts.timing:
+                timing = " -sdfmax /"+self.cfg.testbench+"/"+self.cfg.testbench_instance+"=../"+self.cfg.root+self.cfg.xilinx.sdf
+            else:
+                timing = ""
+
+            ## This runs the simulation.....                
+            command = "./"+self.executable+" -tclbatch ../../src/isim.tcl "+gui+ timing +" -log "+ self.sim_log
+            
             print "EXECUTE: "+ command
             os.system(command)
         else:
