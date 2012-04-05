@@ -146,7 +146,7 @@ module testbench;
       end
 
     always @(posedge `DUT.cpu_int_i)
-      $display("CPU INT 0x%x @ %d", `DUT.int_src, $time);
+      $display("CPU INT 0x%x @ %d", `DUT.irq_controller.int_src, $time);
     
     
 `include "uart_tasks.v"
