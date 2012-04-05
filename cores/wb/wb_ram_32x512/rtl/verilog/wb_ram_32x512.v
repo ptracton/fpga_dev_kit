@@ -79,7 +79,7 @@ module wb_ram_32x512(
     //
 `ifdef XILINX
     initial $display("XILINX WB 32x512 RAM");
- `ifndef RAMB16_S36
+ `ifdef RAMB16_S36
    
    initial $display("RAMB16_S36");
 
