@@ -32,6 +32,7 @@ class fpga:
         # Synthesis details
         #
         self.synthesis_files = []
+        self.synthesis_options = []
         self.fpga_model = ""        
         self.netlist = ""
         self.sdf = ""

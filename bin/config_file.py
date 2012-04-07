@@ -54,6 +54,8 @@ class config_file:
         self.testbench = ""
         self.testbench_instance = ""
         self.design_top_level = ""
+        self.cpu = False
+        self.program_image = ""
 
         self.xilinx = fpga.fpga()
         self.altera = fpga.fpga()
@@ -123,6 +125,15 @@ class config_file:
                     print "Design Top Level ="+design.group(1).lstrip()
                     self.design_top_level=design.group(1).lstrip()
 
+                cpu = re.search('CPU:(.*)', i)
+                if cpu:
+                    print "CPU ="+cpu.group(1).lstrip()
+                    self.cpu=cpu.group(1).lstrip()
+
+                program_image = re.search('PROGRAM_IMAGE:(.*)', i)
+                if program_image:
+                    print "PROGRAM_IMAGE ="+program_image.group(1).lstrip()
+                    self.program_image=program_image.group(1).lstrip()
 
                 include = re.search('^INCLUDE:(.*)', i)
                 if include:
@@ -226,6 +237,11 @@ class config_file:
                 if xilinx_synthesis:
                     print "Xilinx Synthesis = " + xilinx_synthesis.group(1).lstrip()
                     self.xilinx.synthesis_files.append(xilinx_synthesis.group(1).lstrip())
+
+                xilinx_synthesis_options = re.search('^XILINX_SYNTHESIS_OPTIONS:(.*)', i)
+                if xilinx_synthesis_options:
+                    print "Xilinx Synthesis Options= " + xilinx_synthesis_options.group(1).lstrip()
+                    self.xilinx.synthesis_options.append(xilinx_synthesis_options.group(1).lstrip())
 
                 asic_include = re.search('^ASIC_INCLUDE:(.*)', i)
                 if asic_include:
