@@ -77,7 +77,7 @@ INT_init:
 ;;; ****************************************************************************	
 UART_init:
 	;; Set baud rate and turn on baud rate generator
-	load s0, 51
+	load s0, 1b
 	output s0, UART_BAUD_COUNT
 	load s0, 80
 	output s0, UART_BAUD_CONTROL

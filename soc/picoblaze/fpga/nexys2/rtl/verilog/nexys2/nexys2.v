@@ -121,7 +121,7 @@ module nexys2(
     //
     // 8 bit interrupt handler
     //
-    wire [7:0] 		  int_src ={5'b0, uart_tx_int, uart_rx_int};
+    wire [7:0] 		  int_src ={6'b0, uart_tx_int, uart_rx_int};
     wire [7:0] 		  int_mask;
     wire [7:0] 		  int_clear;
     wire [7:0] 		  interrupts;
