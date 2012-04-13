@@ -19,7 +19,7 @@ task uart_configure;
 	
 	//Baud Rate LSB
 	@(posedge testbench.clk_tb);	
-	testbench.uart_master.wb_wr1(32'hFFFF0000,    4'h0, 32'h00000051);
+	testbench.uart_master.wb_wr1(32'hFFFF0000,    4'h0, 32'h0000001b);
 	
 	//Baud Rate MSB
 	@(posedge testbench.clk_tb);	
