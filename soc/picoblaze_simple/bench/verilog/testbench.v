@@ -106,13 +106,13 @@ module testbench;
     //
     // DUT to test
     //
-    nexys2 dut(
-	       .clk_pad(clk_tb),
-	       .rst_pad(reset_tb),
-	       
-	       .rx_pad(uart_tx_tb),
-	       .tx_pad(uart_rx_tb)
-	       );    
+    picoblaze_simple dut(
+			 .clk_pad(clk_tb),
+			 .rst_pad(reset_tb),
+			 
+			 .rx_pad(uart_tx_tb),
+			 .tx_pad(uart_rx_tb)
+			 );    
     
     //
     // Dump signals for waveform viewing

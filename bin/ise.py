@@ -40,6 +40,7 @@ class ise(synth_tool.synth_tool):
         self.twr_file = self.cfg.project+".twr"
         self.ut_file = self.cfg.project+".ut"
         self.ppr_file = self.cfg.project+"_timesim.v"
+        self.bit_file = self.cfg.project+".bit"
         return
 
     ################################################################################
@@ -140,7 +141,10 @@ class ise(synth_tool.synth_tool):
         command = ngdbuild+" -intstyle ise -dd _ngo -nt timestamp -uc "+self.cfg.root+"/"+self.cfg.xilinx.constraints+" -p "+self.cfg.xilinx.fpga_model+" " +self.ngc_file+" " +self.ngd_file
         print command
         os.system(command)
-
+        if not os.path.exists(self.ngd_file):
+            print "NGDBUILD FAIL\n"
+            sys.exit(1)
+            
 
         ##
         ## MAP maps design to xilinx elements
@@ -148,7 +152,9 @@ class ise(synth_tool.synth_tool):
         command = map_executable +" -intstyle ise -p "+ self.cfg.xilinx.fpga_model+" -o "+self.map_ncd_file + " " +self.ngd_file + " " + self.pcf_file 
         print command
         os.system(command)
-
+        if not os.path.exists(self.map_ncd_file):
+            print "MAP FAIL\n"
+            sys.exit(1)
 
         return
     
@@ -168,6 +174,9 @@ class ise(synth_tool.synth_tool):
         command = par +" -w -intstyle ise " + self.map_ncd_file + " " +self.ncd_file +" "+self.pcf_file
         print command
         os.system(command)
+        if not os.path.exists(self.ncd_file):
+            print "PAR FAIL\n"
+            sys.exit(1)
 
         ##
         ## TRCE: Creates a Timing Report file (TWR) derived from static timing
@@ -178,11 +187,14 @@ class ise(synth_tool.synth_tool):
         command = trce + " -intstyle ise -xml " + self.twx_file+" " +self.ncd_file +" "+ self.pcf_file
         print command
         os.system(command)
+        if not os.path.exists(self.twx_file):
+            print "TRCE FAIL\n"
+            sys.exit(1)
 
         ##
         ## Netgen -- creates a post place and route simulation model 
         ## 
-        command = netgen + " -intstyle ise -sdf_anno false -insert_glbl true -ofmt verilog -dir netgen/par -pcf " + self.pcf_file + " -sim "+self.ncd_file +" " + self.ppr_file
+        command = netgen + " -intstyle ise -sdf_anno false -insert_glbl true -w -ofmt verilog -dir netgen/par -pcf " + self.pcf_file + " -sim "+self.ncd_file +" " + self.ppr_file
         print command
         os.system(command)
         
@@ -199,8 +211,11 @@ class ise(synth_tool.synth_tool):
         ##
         ## BITGEN -- create the bit file for download
         ##
-        command = bitgen + " -intstyle ise -g StartupClk:JtagClk "  + self.ncd_file
+        command = bitgen + " -intstyle ise -w -g StartupClk:JtagClk "  + self.ncd_file
         print command
         os.system(command)
-        
+        if not os.path.exists(self.bit_file):
+            print "BITGEN FAIL\n"
+            sys.exit(1)          
+
         return

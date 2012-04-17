@@ -8,14 +8,14 @@
 // Update Count    : 0
 // Status          : Unknown, Use with caution!
 
-module nexys2(
-	      input wire clk_pad,
-	      input wire rst_pad,
-
-	      input wire rx_pad,
-	      output wire tx_pad
-	      );
-
+module picoblaze_simple(
+			input wire clk_pad,
+			input wire rst_pad,
+			
+			input wire rx_pad,
+			output wire tx_pad
+			);
+    
 
     //
     // System Controller has the DCM and Reset logic.  It takes the clock and reset
