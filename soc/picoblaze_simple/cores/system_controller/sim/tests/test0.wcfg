@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="testbench" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="3" />
+   <wvobject fp_name="group17" type="group">
+      <obj_property name="label">TEST BENCH</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/testbench/clk_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_o</obj_property>
+         <obj_property name="ObjectShortName">clk_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/rst_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_o</obj_property>
+         <obj_property name="ObjectShortName">rst_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/locked" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">locked</obj_property>
+         <obj_property name="ObjectShortName">locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/sim_pass" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sim_pass</obj_property>
+         <obj_property name="ObjectShortName">sim_pass</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/sim_timeout" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sim_timeout</obj_property>
+         <obj_property name="ObjectShortName">sim_timeout</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/any_fail" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">any_fail</obj_property>
+         <obj_property name="ObjectShortName">any_fail</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/clk_tb" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_tb</obj_property>
+         <obj_property name="ObjectShortName">clk_tb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/reset_tb" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reset_tb</obj_property>
+         <obj_property name="ObjectShortName">reset_tb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/thread_pass" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">thread_pass</obj_property>
+         <obj_property name="ObjectShortName">thread_pass</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/thread_fail" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">thread_fail</obj_property>
+         <obj_property name="ObjectShortName">thread_fail</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/timeout_count" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timeout_count[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timeout_count[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/timeout_threshold" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timeout_threshold[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timeout_threshold[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/start" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">start[63:0]</obj_property>
+         <obj_property name="ObjectShortName">start[63:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/stop" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">stop[63:0]</obj_property>
+         <obj_property name="ObjectShortName">stop[63:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/diff" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">diff[63:0]</obj_property>
+         <obj_property name="ObjectShortName">diff[63:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group30" type="group">
+      <obj_property name="label">DUT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/testbench/dut/clk_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_pad</obj_property>
+         <obj_property name="ObjectShortName">clk_pad</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/rst_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_pad</obj_property>
+         <obj_property name="ObjectShortName">rst_pad</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/clk_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_o</obj_property>
+         <obj_property name="ObjectShortName">clk_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/locked" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">locked</obj_property>
+         <obj_property name="ObjectShortName">locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/clk_ibufg_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_ibufg_o</obj_property>
+         <obj_property name="ObjectShortName">clk_ibufg_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/clk_bufg_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_bufg_o</obj_property>
+         <obj_property name="ObjectShortName">clk_bufg_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/clk_dcm_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_dcm_o</obj_property>
+         <obj_property name="ObjectShortName">clk_dcm_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/lost_dcm_lock" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lost_dcm_lock</obj_property>
+         <obj_property name="ObjectShortName">lost_dcm_lock</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/rst_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_o</obj_property>
+         <obj_property name="ObjectShortName">rst_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/rst_dcm" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_dcm</obj_property>
+         <obj_property name="ObjectShortName">rst_dcm</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/delay_rst_o" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">delay_rst_o[7:0]</obj_property>
+         <obj_property name="ObjectShortName">delay_rst_o[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/rst_dcm_delay" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_dcm_delay[2:0]</obj_property>
+         <obj_property name="ObjectShortName">rst_dcm_delay[2:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group67" type="group">
+      <obj_property name="label">DCM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/testbench/dut/DCM_0/CLKFB" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CLKFB</obj_property>
+         <obj_property name="ObjectShortName">CLKFB</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/CLKIN" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CLKIN</obj_property>
+         <obj_property name="ObjectShortName">CLKIN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/DSSEN" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">DSSEN</obj_property>
+         <obj_property name="ObjectShortName">DSSEN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/PSCLK" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PSCLK</obj_property>
+         <obj_property name="ObjectShortName">PSCLK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/PSEN" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PSEN</obj_property>
+         <obj_property name="ObjectShortName">PSEN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/PSINCDEC" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PSINCDEC</obj_property>
+         <obj_property name="ObjectShortName">PSINCDEC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/RST" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">RST</obj_property>
+         <obj_property name="ObjectShortName">RST</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/LOCKED" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">LOCKED</obj_property>
+         <obj_property name="ObjectShortName">LOCKED</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/PSDONE" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PSDONE</obj_property>
+         <obj_property name="ObjectShortName">PSDONE</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/STATUS" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">STATUS[7:0]</obj_property>
+         <obj_property name="ObjectShortName">STATUS[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/clkin_lost_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clkin_lost_out</obj_property>
+         <obj_property name="ObjectShortName">clkin_lost_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/locked_out_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">locked_out_out</obj_property>
+         <obj_property name="ObjectShortName">locked_out_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/clkfb_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clkfb_in</obj_property>
+         <obj_property name="ObjectShortName">clkfb_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/clkin_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clkin_in</obj_property>
+         <obj_property name="ObjectShortName">clkin_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/rst_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_in</obj_property>
+         <obj_property name="ObjectShortName">rst_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_period_pulse" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_period_pulse</obj_property>
+         <obj_property name="ObjectShortName">lock_period_pulse</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/rst_flag" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_flag</obj_property>
+         <obj_property name="ObjectShortName">rst_flag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/locked_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">locked_out</obj_property>
+         <obj_property name="ObjectShortName">locked_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/psdone_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">psdone_out</obj_property>
+         <obj_property name="ObjectShortName">psdone_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/ps_overflow_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ps_overflow_out</obj_property>
+         <obj_property name="ObjectShortName">ps_overflow_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/ps_lock" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ps_lock</obj_property>
+         <obj_property name="ObjectShortName">ps_lock</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_period" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_period</obj_property>
+         <obj_property name="ObjectShortName">lock_period</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_delay" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_delay</obj_property>
+         <obj_property name="ObjectShortName">lock_delay</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_clkin" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_clkin</obj_property>
+         <obj_property name="ObjectShortName">lock_clkin</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_clkfb" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_clkfb</obj_property>
+         <obj_property name="ObjectShortName">lock_clkfb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_out[1:0]</obj_property>
+         <obj_property name="ObjectShortName">lock_out[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_out1_neg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_out1_neg</obj_property>
+         <obj_property name="ObjectShortName">lock_out1_neg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_fb" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_fb</obj_property>
+         <obj_property name="ObjectShortName">lock_fb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_ps" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_ps</obj_property>
+         <obj_property name="ObjectShortName">lock_ps</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_ps_dly" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_ps_dly</obj_property>
+         <obj_property name="ObjectShortName">lock_ps_dly</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_fb_dly" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_fb_dly</obj_property>
+         <obj_property name="ObjectShortName">lock_fb_dly</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_fb_dly_tmp" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_fb_dly_tmp</obj_property>
+         <obj_property name="ObjectShortName">lock_fb_dly_tmp</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/fb_delay_found" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fb_delay_found</obj_property>
+         <obj_property name="ObjectShortName">fb_delay_found</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/clock_stopped" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clock_stopped</obj_property>
+         <obj_property name="ObjectShortName">clock_stopped</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/lock_period_dly" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lock_period_dly</obj_property>
+         <obj_property name="ObjectShortName">lock_period_dly</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/LOCKED_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">LOCKED_out</obj_property>
+         <obj_property name="ObjectShortName">LOCKED_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/DCM_0/clkin_error" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clkin_error</obj_property>
+         <obj_property name="ObjectShortName">clkin_error</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

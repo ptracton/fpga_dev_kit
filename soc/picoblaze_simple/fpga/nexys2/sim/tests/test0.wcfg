@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="./isim.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="testbench" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="4" />
+   <wvobject fp_name="group13" type="group">
+      <obj_property name="label">TESTBENCH</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/testbench/any_fail" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">any_fail</obj_property>
+         <obj_property name="ObjectShortName">any_fail</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/clk_tb" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_tb</obj_property>
+         <obj_property name="ObjectShortName">clk_tb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/read_word" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_word[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_word[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/reset_tb" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reset_tb</obj_property>
+         <obj_property name="ObjectShortName">reset_tb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/rx_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rx_pad</obj_property>
+         <obj_property name="ObjectShortName">rx_pad</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/sim_pass" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sim_pass</obj_property>
+         <obj_property name="ObjectShortName">sim_pass</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/sim_timeout" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sim_timeout</obj_property>
+         <obj_property name="ObjectShortName">sim_timeout</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/thread_fail" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">thread_fail</obj_property>
+         <obj_property name="ObjectShortName">thread_fail</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/thread_pass" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">thread_pass</obj_property>
+         <obj_property name="ObjectShortName">thread_pass</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/timeout_count" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timeout_count[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timeout_count[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/timeout_threshold" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timeout_threshold[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timeout_threshold[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/tx_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">tx_pad</obj_property>
+         <obj_property name="ObjectShortName">tx_pad</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group28" type="group">
+      <obj_property name="label">DUT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/testbench/dut/clk_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_pad</obj_property>
+         <obj_property name="ObjectShortName">clk_pad</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/rst_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_pad</obj_property>
+         <obj_property name="ObjectShortName">rst_pad</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/rx_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rx_pad</obj_property>
+         <obj_property name="ObjectShortName">rx_pad</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/tx_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">tx_pad</obj_property>
+         <obj_property name="ObjectShortName">tx_pad</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/clk_i" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_i</obj_property>
+         <obj_property name="ObjectShortName">clk_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/rst_i" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_i</obj_property>
+         <obj_property name="ObjectShortName">rst_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/locked" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">locked</obj_property>
+         <obj_property name="ObjectShortName">locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu_int_i" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cpu_int_i</obj_property>
+         <obj_property name="ObjectShortName">cpu_int_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu_data_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cpu_data_i[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cpu_data_i[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu_data_o" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cpu_data_o[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cpu_data_o[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu_addr_o" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cpu_addr_o[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cpu_addr_o[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu_rd_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cpu_rd_o</obj_property>
+         <obj_property name="ObjectShortName">cpu_rd_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu_wr_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cpu_wr_o</obj_property>
+         <obj_property name="ObjectShortName">cpu_wr_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu_inta_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cpu_inta_o</obj_property>
+         <obj_property name="ObjectShortName">cpu_inta_o</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group41" type="group">
+      <obj_property name="label">SYS CON</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/testbench/dut/sys_con/clk_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_pad</obj_property>
+         <obj_property name="ObjectShortName">clk_pad</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/rst_pad" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_pad</obj_property>
+         <obj_property name="ObjectShortName">rst_pad</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/clk_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_o</obj_property>
+         <obj_property name="ObjectShortName">clk_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/locked" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">locked</obj_property>
+         <obj_property name="ObjectShortName">locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/clk_ibufg_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_ibufg_o</obj_property>
+         <obj_property name="ObjectShortName">clk_ibufg_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/clk_bufg_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_bufg_o</obj_property>
+         <obj_property name="ObjectShortName">clk_bufg_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/clk_dcm_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_dcm_o</obj_property>
+         <obj_property name="ObjectShortName">clk_dcm_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/lost_dcm_lock" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">lost_dcm_lock</obj_property>
+         <obj_property name="ObjectShortName">lost_dcm_lock</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/rst_o" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_o</obj_property>
+         <obj_property name="ObjectShortName">rst_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/rst_dcm" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_dcm</obj_property>
+         <obj_property name="ObjectShortName">rst_dcm</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/delay_rst_o" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">delay_rst_o[7:0]</obj_property>
+         <obj_property name="ObjectShortName">delay_rst_o[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/sys_con/rst_dcm_delay" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_dcm_delay[7:0]</obj_property>
+         <obj_property name="ObjectShortName">rst_dcm_delay[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group236" type="group">
+      <obj_property name="label">CPU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/testbench/dut/cpu/processor/aaa_decode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">aaa_decode[1:24]</obj_property>
+         <obj_property name="ObjectShortName">aaa_decode[1:24]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/active_interrupt" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">active_interrupt</obj_property>
+         <obj_property name="ObjectShortName">active_interrupt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/address" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">address[9:0]</obj_property>
+         <obj_property name="ObjectShortName">address[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/alu_group" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">alu_group[7:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_group[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/alu_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">alu_result[7:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_result[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/arith_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">arith_carry</obj_property>
+         <obj_property name="ObjectShortName">arith_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/arith_carry_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">arith_carry_in</obj_property>
+         <obj_property name="ObjectShortName">arith_carry_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/arith_carry_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">arith_carry_out</obj_property>
+         <obj_property name="ObjectShortName">arith_carry_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/arith_internal_carry" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">arith_internal_carry[7:0]</obj_property>
+         <obj_property name="ObjectShortName">arith_internal_carry[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/arith_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">arith_result[7:0]</obj_property>
+         <obj_property name="ObjectShortName">arith_result[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/arith_value" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">arith_value[7:0]</obj_property>
+         <obj_property name="ObjectShortName">arith_value[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/call_type" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">call_type</obj_property>
+         <obj_property name="ObjectShortName">call_type</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/carry_fast_route" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">carry_fast_route</obj_property>
+         <obj_property name="ObjectShortName">carry_fast_route</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/carry_flag" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">carry_flag</obj_property>
+         <obj_property name="ObjectShortName">carry_flag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/clean_int" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clean_int</obj_property>
+         <obj_property name="ObjectShortName">clean_int</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/condition_met" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">condition_met</obj_property>
+         <obj_property name="ObjectShortName">condition_met</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/flag_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_enable</obj_property>
+         <obj_property name="ObjectShortName">flag_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/flag_type" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_type</obj_property>
+         <obj_property name="ObjectShortName">flag_type</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/flag_write" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_write</obj_property>
+         <obj_property name="ObjectShortName">flag_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/half_arith" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">half_arith[7:0]</obj_property>
+         <obj_property name="ObjectShortName">half_arith[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/half_stack_address" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">half_stack_address[4:0]</obj_property>
+         <obj_property name="ObjectShortName">half_stack_address[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/high_parity" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">high_parity</obj_property>
+         <obj_property name="ObjectShortName">high_parity</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/high_shift_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">high_shift_in</obj_property>
+         <obj_property name="ObjectShortName">high_shift_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/high_zero" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">high_zero</obj_property>
+         <obj_property name="ObjectShortName">high_zero</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/high_zero_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">high_zero_carry</obj_property>
+         <obj_property name="ObjectShortName">high_zero_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/in_port" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">in_port[7:0]</obj_property>
+         <obj_property name="ObjectShortName">in_port[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/inc_pc_value" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">inc_pc_value[9:0]</obj_property>
+         <obj_property name="ObjectShortName">inc_pc_value[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/inc_pc_vector" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">inc_pc_vector[9:0]</obj_property>
+         <obj_property name="ObjectShortName">inc_pc_vector[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/input_fetch_type" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">input_fetch_type</obj_property>
+         <obj_property name="ObjectShortName">input_fetch_type</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/input_group" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">input_group[7:0]</obj_property>
+         <obj_property name="ObjectShortName">input_group[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/instruction" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">instruction[17:0]</obj_property>
+         <obj_property name="ObjectShortName">instruction[17:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/int_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">int_enable</obj_property>
+         <obj_property name="ObjectShortName">int_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/int_enable_value" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">int_enable_value</obj_property>
+         <obj_property name="ObjectShortName">int_enable_value</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/int_pulse" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">int_pulse</obj_property>
+         <obj_property name="ObjectShortName">int_pulse</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/int_update_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">int_update_enable</obj_property>
+         <obj_property name="ObjectShortName">int_update_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/internal_reset" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">internal_reset</obj_property>
+         <obj_property name="ObjectShortName">internal_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/interrupt" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">interrupt</obj_property>
+         <obj_property name="ObjectShortName">interrupt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/interrupt_ack" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">interrupt_ack</obj_property>
+         <obj_property name="ObjectShortName">interrupt_ack</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/interrupt_ack_internal" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">interrupt_ack_internal</obj_property>
+         <obj_property name="ObjectShortName">interrupt_ack_internal</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/invert_arith_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">invert_arith_carry</obj_property>
+         <obj_property name="ObjectShortName">invert_arith_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/io_initial_decode" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">io_initial_decode</obj_property>
+         <obj_property name="ObjectShortName">io_initial_decode</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/kcpsm3_opcode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">kcpsm3_opcode[1:152]</obj_property>
+         <obj_property name="ObjectShortName">kcpsm3_opcode[1:152]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/kcpsm3_status" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">kcpsm3_status[1:104]</obj_property>
+         <obj_property name="ObjectShortName">kcpsm3_status[1:104]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/kk_decode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">kk_decode[1:16]</obj_property>
+         <obj_property name="ObjectShortName">kk_decode[1:16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/logical_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">logical_result[7:0]</obj_property>
+         <obj_property name="ObjectShortName">logical_result[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/logical_value" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">logical_value[7:0]</obj_property>
+         <obj_property name="ObjectShortName">logical_value[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/low_parity" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">low_parity</obj_property>
+         <obj_property name="ObjectShortName">low_parity</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/low_shift_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">low_shift_in</obj_property>
+         <obj_property name="ObjectShortName">low_shift_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/low_zero" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">low_zero</obj_property>
+         <obj_property name="ObjectShortName">low_zero</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/low_zero_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">low_zero_carry</obj_property>
+         <obj_property name="ObjectShortName">low_zero_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/memory_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">memory_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">memory_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/memory_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">memory_enable</obj_property>
+         <obj_property name="ObjectShortName">memory_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/memory_type" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">memory_type</obj_property>
+         <obj_property name="ObjectShortName">memory_type</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/memory_write" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">memory_write</obj_property>
+         <obj_property name="ObjectShortName">memory_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/move_group" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">move_group</obj_property>
+         <obj_property name="ObjectShortName">move_group</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/next_stack_address" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">next_stack_address[4:0]</obj_property>
+         <obj_property name="ObjectShortName">next_stack_address[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/normal_count" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">normal_count</obj_property>
+         <obj_property name="ObjectShortName">normal_count</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/not_active_interrupt" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">not_active_interrupt</obj_property>
+         <obj_property name="ObjectShortName">not_active_interrupt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/not_t_state" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">not_t_state</obj_property>
+         <obj_property name="ObjectShortName">not_t_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/out_port" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">out_port[7:0]</obj_property>
+         <obj_property name="ObjectShortName">out_port[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/parity" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">parity</obj_property>
+         <obj_property name="ObjectShortName">parity</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/parity_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">parity_carry</obj_property>
+         <obj_property name="ObjectShortName">parity_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">pc[9:0]</obj_property>
+         <obj_property name="ObjectShortName">pc[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/pc_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pc_enable</obj_property>
+         <obj_property name="ObjectShortName">pc_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/pc_value" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">pc_value[9:0]</obj_property>
+         <obj_property name="ObjectShortName">pc_value[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/pc_value_carry" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">pc_value_carry[8:0]</obj_property>
+         <obj_property name="ObjectShortName">pc_value_carry[8:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/pc_vector" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">pc_vector[9:0]</obj_property>
+         <obj_property name="ObjectShortName">pc_vector[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/pc_vector_carry" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">pc_vector_carry[8:0]</obj_property>
+         <obj_property name="ObjectShortName">pc_vector_carry[8:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/port_id" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">port_id[7:0]</obj_property>
+         <obj_property name="ObjectShortName">port_id[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/push_or_pop_type" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">push_or_pop_type</obj_property>
+         <obj_property name="ObjectShortName">push_or_pop_type</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/read_active" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">read_active</obj_property>
+         <obj_property name="ObjectShortName">read_active</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/read_strobe" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">read_strobe</obj_property>
+         <obj_property name="ObjectShortName">read_strobe</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/register_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">register_enable</obj_property>
+         <obj_property name="ObjectShortName">register_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/register_type" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">register_type</obj_property>
+         <obj_property name="ObjectShortName">register_type</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/register_write" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">register_write</obj_property>
+         <obj_property name="ObjectShortName">register_write</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/reset" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/reset_delay" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reset_delay</obj_property>
+         <obj_property name="ObjectShortName">reset_delay</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s0_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s0_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s0_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s1_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s1_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s1_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s2_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s2_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s2_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s3_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s3_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s3_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s4_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s4_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s4_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s5_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s5_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s5_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s6_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s6_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s6_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s7_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s7_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s7_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s8_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s8_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s8_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/s9_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s9_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">s9_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sa_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sa_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sa_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sb_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sb_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sb_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sc_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sc_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sc_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sd_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sd_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sd_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/se_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">se_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">se_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/second_operand" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">second_operand[7:0]</obj_property>
+         <obj_property name="ObjectShortName">second_operand[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_arith" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_arith</obj_property>
+         <obj_property name="ObjectShortName">sel_arith</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_arith_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_arith_carry</obj_property>
+         <obj_property name="ObjectShortName">sel_arith_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_arith_carry_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_arith_carry_in</obj_property>
+         <obj_property name="ObjectShortName">sel_arith_carry_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_carry" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_carry[3:0]</obj_property>
+         <obj_property name="ObjectShortName">sel_carry[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_group" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_group</obj_property>
+         <obj_property name="ObjectShortName">sel_group</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_logical" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_logical</obj_property>
+         <obj_property name="ObjectShortName">sel_logical</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_parity" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_parity</obj_property>
+         <obj_property name="ObjectShortName">sel_parity</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_shadow_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_shadow_carry</obj_property>
+         <obj_property name="ObjectShortName">sel_shadow_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_shadow_zero" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_shadow_zero</obj_property>
+         <obj_property name="ObjectShortName">sel_shadow_zero</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_shift" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_shift</obj_property>
+         <obj_property name="ObjectShortName">sel_shift</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sel_shift_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sel_shift_carry</obj_property>
+         <obj_property name="ObjectShortName">sel_shift_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sf_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sf_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sf_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/shadow_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">shadow_carry</obj_property>
+         <obj_property name="ObjectShortName">shadow_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/shadow_zero" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">shadow_zero</obj_property>
+         <obj_property name="ObjectShortName">shadow_zero</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/shift_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">shift_carry</obj_property>
+         <obj_property name="ObjectShortName">shift_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/shift_carry_value" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">shift_carry_value</obj_property>
+         <obj_property name="ObjectShortName">shift_carry_value</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/shift_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">shift_in</obj_property>
+         <obj_property name="ObjectShortName">shift_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/shift_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">shift_result[7:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_result[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/shift_value" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">shift_value[7:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_value[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm00_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm00_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm00_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm01_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm01_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm01_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm02_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm02_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm02_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm03_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm03_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm03_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm04_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm04_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm04_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm05_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm05_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm05_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm06_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm06_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm06_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm07_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm07_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm07_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm08_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm08_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm08_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm09_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm09_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm09_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm0a_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm0a_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm0a_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm0b_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm0b_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm0b_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm0c_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm0c_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm0c_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm0d_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm0d_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm0d_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm0e_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm0e_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm0e_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm0f_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm0f_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm0f_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm10_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm10_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm10_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm11_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm11_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm11_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm12_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm12_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm12_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm13_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm13_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm13_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm14_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm14_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm14_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm15_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm15_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm15_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm16_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm16_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm16_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm17_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm17_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm17_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm18_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm18_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm18_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm19_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm19_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm19_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm1a_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm1a_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm1a_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm1b_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm1b_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm1b_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm1c_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm1c_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm1c_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm1d_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm1d_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm1d_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm1e_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm1e_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm1e_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm1f_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm1f_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm1f_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm20_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm20_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm20_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm21_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm21_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm21_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm22_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm22_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm22_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm23_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm23_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm23_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm24_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm24_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm24_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm25_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm25_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm25_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm26_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm26_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm26_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm27_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm27_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm27_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm28_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm28_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm28_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm29_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm29_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm29_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm2a_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm2a_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm2a_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm2b_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm2b_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm2b_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm2c_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm2c_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm2c_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm2d_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm2d_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm2d_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm2e_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm2e_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm2e_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm2f_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm2f_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm2f_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm30_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm30_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm30_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm31_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm31_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm31_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm32_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm32_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm32_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm33_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm33_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm33_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm34_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm34_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm34_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm35_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm35_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm35_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm36_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm36_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm36_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm37_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm37_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm37_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm38_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm38_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm38_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm39_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm39_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm39_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm3a_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm3a_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm3a_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm3b_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm3b_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm3b_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm3c_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm3c_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm3c_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm3d_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm3d_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm3d_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm3e_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm3e_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm3e_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/spm3f_contents" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">spm3f_contents[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spm3f_contents[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/stack_address" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">stack_address[4:0]</obj_property>
+         <obj_property name="ObjectShortName">stack_address[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/stack_address_carry" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">stack_address_carry[3:0]</obj_property>
+         <obj_property name="ObjectShortName">stack_address_carry[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/stack_pop_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">stack_pop_data[9:0]</obj_property>
+         <obj_property name="ObjectShortName">stack_pop_data[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/stack_ram_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">stack_ram_data[9:0]</obj_property>
+         <obj_property name="ObjectShortName">stack_ram_data[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/stack_write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stack_write_enable</obj_property>
+         <obj_property name="ObjectShortName">stack_write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/store_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">store_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">store_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sx" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sx[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sx[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sx_decode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sx_decode[1:16]</obj_property>
+         <obj_property name="ObjectShortName">sx_decode[1:16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sy" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sy[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sy[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/sy_decode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sy_decode[1:16]</obj_property>
+         <obj_property name="ObjectShortName">sy_decode[1:16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/t_state" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">t_state</obj_property>
+         <obj_property name="ObjectShortName">t_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/valid_to_move" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">valid_to_move</obj_property>
+         <obj_property name="ObjectShortName">valid_to_move</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/write_active" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">write_active</obj_property>
+         <obj_property name="ObjectShortName">write_active</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/write_strobe" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">write_strobe</obj_property>
+         <obj_property name="ObjectShortName">write_strobe</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/zero_carry" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">zero_carry</obj_property>
+         <obj_property name="ObjectShortName">zero_carry</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/zero_fast_route" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">zero_fast_route</obj_property>
+         <obj_property name="ObjectShortName">zero_fast_route</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/dut/cpu/processor/zero_flag" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">zero_flag</obj_property>
+         <obj_property name="ObjectShortName">zero_flag</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
