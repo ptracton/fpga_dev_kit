@@ -74,6 +74,9 @@ if __name__ == '__main__':
 
     if opts.xilinx:
         FPGA = ise.ise(opts, cfg, args)
+        FPGA.create_xst_file()
+        FPGA.create_prj_file()
+        sys.exit(0)
     if opts.altera:
         FPGA = quartus.quartus(opts, cfg, args)
     if opts.asic:

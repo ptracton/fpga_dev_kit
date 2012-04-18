@@ -36,10 +36,14 @@ BITGEN = bitgen
 NETGEN = netgen
 TRCE = trce
 DJTGCFG = djtgcfg
+BUILD_FPGA = build_fpga.py
 
 all: $(BITGEN_OUTPUT) 
 
-$(SYNTHESIS_OUTPUT): $(XST_FILE) $(PRJ_FILE) 
+$(PRJ_FILE):
+	$(BUILD_FPGA) -x 
+
+$(SYNTHESIS_OUTPUT): $(PRJ_FILE) 
 	$(RM) ./xst
 	$(MKDIR) xst
 	$(MKDIR) xst/projnav.tmp
@@ -66,4 +70,4 @@ sim:
 	$(NETGEN) -intstyle ise -sdf_anno false -insert_glbl true -w -ofmt verilog -dir netgen/par -pcf $(PCF_FILE) -sim $(PAR_OUTPUT) $(NETGEN_OUTPUT)
 
 clean:
-	$(RM) ./xst/ $(SYNTHESIS_LOG_FILE) $(SYNTHESIS_OUTPUT) $(NGDBUILD_OUTPUT) $(MAP_OUTPUT) $(PAR_OUTPUT) $(BITGEN_OUTPUT) $(PROJECT).pcf *.xrpt _xmsgs/ xlnx_auto_0_xdb/ *.lst *~ *log *xml *html *.csv *.txt *bgn *xwbt *bld *lso *drc *par *map *mrp *ngm *pad *ptwx *unroutes *xpi netgen/ $(TIMING_OUTPUT) *.twx
+	$(RM) ./xst/ $(SYNTHESIS_LOG_FILE) $(SYNTHESIS_OUTPUT) $(NGDBUILD_OUTPUT) $(MAP_OUTPUT) $(PAR_OUTPUT) $(BITGEN_OUTPUT) $(PROJECT).pcf *.xrpt _xmsgs/ xlnx_auto_0_xdb/ *.lst *~ *log *xml *html *.csv *.txt *bgn *xwbt *bld *lso *drc *par *map *mrp *ngm *pad *ptwx *unroutes *xpi netgen/ $(TIMING_OUTPUT) *.twx $(XST_FILE) $(PRJ_FILE)
