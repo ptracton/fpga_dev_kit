@@ -1,0 +1,10 @@
+set -tmpdir ./xst/projnav.tmp
+set -xsthdpdir "xst"
+run
+-top picoblaze_simple
+-ifn picoblaze_simple.prj
+-ofn picoblaze_simple
+-ofmt NGC
+-p xc3s500e-5-fg320
+-keep_hierarchy Yes
+-ofmt NGC
