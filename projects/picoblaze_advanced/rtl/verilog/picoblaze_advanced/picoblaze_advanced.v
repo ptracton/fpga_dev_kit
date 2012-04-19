@@ -15,7 +15,7 @@ module picoblaze_advanced(
 			  input wire rx_pad,
 			  output wire tx_pad,
 
-			  inout wire [7:0] switches_pads,
+			  input wire [7:0] switches_pads,
 			  output wire [7:0] leds_pads
 			  );
    
@@ -120,47 +120,22 @@ module picoblaze_advanced(
 		      );
     
 
-   //
-   // GPIO for LEDS
-   //
-   wire [7:0] 		  leds_gpio_oe;
-   wire [7:0] 		  leds_gpio_enable;
-   wire [7:0] 		  leds_gpio_data_i;
-   wire [7:0] 		  leds_gpio_data_o;
-   wire 		  leds_gpio_int_o;
-   
-   pb_gpio leds_gpio(
-		     .clk_i(clk_i),
-		     .rst_i(rst_i),
-		     
-		     .gpio(leds_pads),
-		     
-		     .gpio_oe(leds_gpio_oe),
-		     .gpio_enable(leds_gpio_enable),
-		     .gpio_data_i(leds_gpio_data_i),   //Written by FW
-		     .gpio_data_o(leds_gpio_data_o),   //Read by FW
-		     .int_o(leds_gpio_int_o)          
-		     );     
 
 
-   //
-   // GPIO for SWITCHES
-   //
-   wire [7:0] 		  switches_gpio_oe;
-   wire [7:0] 		  switches_gpio_enable;
-   wire [7:0] 		  switches_gpio_data_i;
-   wire [7:0] 		  switches_gpio_data_o;
-   wire 		  switches_gpio_int_o;
-   
-   pb_gpio switches_gpio(
+    //
+    // GPI for SWITCHES
+    //
+    wire [7:0] 		  switches_gpio_enable;
+    wire [7:0] 		  switches_gpio_data_o;
+    wire 		  switches_gpio_int_o;
+    
+    pb_gpi switches_gpio(
 			 .clk_i(clk_i),
 			 .rst_i(rst_i),
 			 
-			 .gpio(switches_pads),
+			 .gpi(switches_pads),
 			 
-			 .gpio_oe(switches_gpio_oe),
 			 .gpio_enable(switches_gpio_enable),
-			 .gpio_data_i(switches_gpio_data_i),   //Written by FW
 			 .gpio_data_o(switches_gpio_data_o),   //Read by FW
 			 .int_o(switches_gpio_int_o)          
 			 );     
@@ -191,61 +166,56 @@ module picoblaze_advanced(
     //
     
     pb_soc_registers register_file(
-			    //
-			    // System Signals
-			    //
-			    .clk_i(clk_i),
-			    .rst_i(rst_i),
-
-			    .sim_status(),
-			    
-			    //
-			    // Bus Signals
-			    //
-			    .addr_i(cpu_addr_o),
-			    .data_i(cpu_data_o),
-			    .rd_i(cpu_rd_o),
-			    .wr_i(cpu_wr_o),		 
-			    .data_o(cpu_data_i),
-
+				   //
+				   // System Signals
+				   //
+				   .clk_i(clk_i),
+				   .rst_i(rst_i),
+				   
+				   .sim_status(),
+				   
+				   //
+				   // Bus Signals
+				   //
+				   .addr_i(cpu_addr_o),
+				   .data_i(cpu_data_o),
+				   .rd_i(cpu_rd_o),
+				   .wr_i(cpu_wr_o),		 
+				   .data_o(cpu_data_i),
+				   
 				   //
 				   // LEDS GPIO
 				   //
-				   .leds_gpio_oe(leds_gpio_oe),
-				   .leds_gpio_enable(leds_gpio_enable),
-				   .leds_gpio_data_i(leds_gpio_data_i),
-				   .leds_gpio_data_o(leds_gpio_data_o),
+				   .leds(leds_pads),
 				   
 				   //
 				   // SWITCHES GPIO
 				   //
-				   .switches_gpio_oe(switches_gpio_oe),
 				   .switches_gpio_enable(switches_gpio_enable),
-				   .switches_gpio_data_i(switches_gpio_data_i),
 				   .switches_gpio_data_o(switches_gpio_data_o),
 				   
-			    //
-			    // Interrupt Controller
-			    //
-			    .int_mask(int_mask),
-			    .int_clear(int_clear),
-			    .interrupts(interrupts),
-		 	    
-			    //
-			    // UART
-			    //
-			    .uart_baud_control(uart_baud_control),
-			    .uart_baud_count(uart_baud_count),
-			    .uart_baud_status(uart_baud_status),
-			    .uart_tx_data(uart_tx_data),
-			    .uart_tx_control(uart_tx_control),
-			    .uart_fifo_status(uart_fifo_status),
-			    .uart_rx_data(uart_rx_data),
-			    .uart_tx_write(uart_tx_write),
-			    .uart_rx_read(uart_rx_read)
-			    
-			    );      
+				   //
+				   // Interrupt Controller
+				   //
+				   .int_mask(int_mask),
+				   .int_clear(int_clear),
+				   .interrupts(interrupts),
+		 		   
+				   //
+				   // UART
+				   //
+				   .uart_baud_control(uart_baud_control),
+				   .uart_baud_count(uart_baud_count),
+				   .uart_baud_status(uart_baud_status),
+				   .uart_tx_data(uart_tx_data),
+				   .uart_tx_control(uart_tx_control),
+				   .uart_fifo_status(uart_fifo_status),
+				   .uart_rx_data(uart_rx_data),
+				   .uart_tx_write(uart_tx_write),
+				   .uart_rx_read(uart_rx_read)
+				   
+				   );      
+       
+    
+endmodule // picoblaze_advanced
 
-    
-    
-endmodule // nexys2

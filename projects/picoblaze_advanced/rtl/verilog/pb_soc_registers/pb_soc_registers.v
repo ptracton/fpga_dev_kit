@@ -39,17 +39,12 @@ module pb_soc_registers(
 			//
 			// LEDS GPIO
 			//
-			output reg [7:0] leds_gpio_oe,
-			output reg [7:0] leds_gpio_enable,
-			output reg [7:0] leds_gpio_data_i,
-			input wire [7:0] leds_gpio_data_o,
+			output reg [7:0] leds,
 						
 			//
 			// SWITCHES GPIO
 			//
-			output reg [7:0] switches_gpio_oe,
 			output reg [7:0] switches_gpio_enable,
-			output reg [7:0] switches_gpio_data_i,
 			input wire [7:0] switches_gpio_data_o,			
 			
 			//
@@ -83,20 +78,15 @@ module pb_soc_registers(
 `define INT_CLEAR         8'h1D
 
    //
-   // LEDS GPIO
+   // LEDS 
    //
-`define LEDS_GPIO_OE     8'h08
-`define LEDS_GPIO_ENABLE 8'h09
-`define LEDS_GPIO_DATA_I 8'h0A
-`define LEDS_GPIO_DATA_O 8'h0B
+`define LEDS     8'h08
 
    //
-   // SWITCHES GPIO
+   // SWITCHES GPI
    //
-`define SWITCHES_GPIO_OE     8'h0C
-`define SWITCHES_GPIO_ENABLE 8'h0D
-`define SWITCHES_GPIO_DATA_I 8'h0E
-`define SWITCHES_GPIO_DATA_O 8'h0F
+`define SWITCHES_GPIO_ENABLE 8'h09
+`define SWITCHES_GPIO_DATA_O 8'h0A
 
    
     //
@@ -140,16 +130,10 @@ module pb_soc_registers(
 	      `INT_MASK         : data_o <= int_mask;
 	      `INT_STATUS       : data_o <= interrupts;
 	      `INT_CLEAR        : data_o <= int_clear;
-	    
-	    `LEDS_GPIO_OE     : data_o <= leds_gpio_oe;
-	    `LEDS_GPIO_ENABLE : data_o <= leds_gpio_enable;
-	    `LEDS_GPIO_DATA_O : data_o <= leds_gpio_data_o;
-
-	    `SWITCHES_GPIO_OE     : data_o <= switches_gpio_oe;
-	    `SWITCHES_GPIO_ENABLE : data_o <= switches_gpio_enable;
-	    `SWITCHES_GPIO_DATA_O : data_o <= switches_gpio_data_o;	    
-	    
-	    
+	    	      	     
+	      `SWITCHES_GPIO_ENABLE : data_o <= switches_gpio_enable;
+	      `SWITCHES_GPIO_DATA_O : data_o <= switches_gpio_data_o;	    
+	    	    
 	      `SIM_STATUS        : data_o <= sim_status;	     
 	      default: data_o <= 8'b0;
 	  endcase // case(addr_i)
@@ -168,14 +152,9 @@ module pb_soc_registers(
 	    int_clear          <= 8'h0;
 	    int_mask           <= 8'hFF;
 	    sim_status         <= 8'h00;
-	   leds_gpio_oe        <= 8'hFF;
-	   leds_gpio_enable    <= 8'hFF;
-	   leds_gpio_data_i        <= 8'h00;
-	   
-	   switches_gpio_oe        <= 8'h00;
-	   switches_gpio_enable    <= 8'hFF;
-	   switches_gpio_data_i    <= 8'h00;
-	   
+	    leds               <= 8'h00;
+	    
+	    switches_gpio_enable    <= 8'hFF;	   
 	end
       else
 	if (wr_i)
@@ -188,14 +167,10 @@ module pb_soc_registers(
 	      `INT_MASK         : int_mask <= data_i;
 	      `INT_CLEAR        : int_clear <= data_i;
 
-	    `LEDS_GPIO_OE     : leds_gpio_oe <= data_i;
-	    `LEDS_GPIO_ENABLE : leds_gpio_enable <= data_i;	    
-	    `LEDS_GPIO_DATA_I : leds_gpio_data_i <= data_i;
-
-	    `SWITCHES_GPIO_OE     : switches_gpio_oe <= data_i;
-	    `SWITCHES_GPIO_ENABLE : switches_gpio_enable <= data_i;
-	    `SWITCHES_GPIO_DATA_I : switches_gpio_data_i <= data_i;
-	    
+	      `LEDS     : leds <= data_i;
+	      
+	      `SWITCHES_GPIO_ENABLE : switches_gpio_enable <= data_i;
+	      
 	      `SIM_STATUS        : sim_status <= data_i;	 	   	      
 	  endcase // case(addr_i)
 	else
