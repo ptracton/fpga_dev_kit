@@ -1,0 +1,203 @@
+;; *********************************************************************
+;; $Header:$
+;; $Author:$
+;; $Date:$
+;; $Revision:$
+;; $State:$
+;; *********************************************************************
+
+;; *********************************************************************
+;; Register and other definitions.  In C code this would all go in some header file
+;; *********************************************************************
+
+	CONSTANT UART_BAUD_CONTROL,      00
+	CONSTANT UART_BAUD_COUNT,        01
+	CONSTANT UART_BAUD_STATUS,       02
+	CONSTANT UART_TX_DATA,           03
+	CONSTANT UART_TX_CONTROL,        04
+	CONSTANT UART_FIFO_STATUS,       05
+	CONSTANT UART_RX_DATA,           06
+
+	CONSTANT LEDS_GPIO_OE,           08
+	CONSTANT LEDS_GPIO_ENABLE,       09	
+	CONSTANT LEDS_GPIO_DATA_I,       0A	
+	CONSTANT LEDS_GPIO_DATA_O,       0B	
+
+	CONSTANT SWITCHES_GPIO_OE,       0C
+	CONSTANT SWITCHES_GPIO_ENABLE,   0D	
+	CONSTANT SWITCHES_GPIO_DATA_I,   0E	
+	CONSTANT SWITCHES_GPIO_DATA_O,   0F
+	
+	CONSTANT INT_MASK,               1B
+	CONSTANT INT_STATUS,             1C
+	CONSTANT INT_CLEAR,              1D
+
+	CONSTANT SIM_STATUS,             FF
+	
+	;; Address of variables in Scratch Memory
+	constant send_char,           00
+	
+	;; Named registers
+	namereg sC, uart_tx_reg
+	namereg sD, uart_rx_reg
+	namereg sE, interrupt_byte
+	namereg sF, task_byte
+	
+;; *********************************************************************
+;; Start is the beginning of the program, at POR we come here.
+;; *********************************************************************
+	
+Start:
+	load s0, 01
+	output s0, SIM_STATUS
+		
+	input s1, LEDS_GPIO_OE
+	compare s1, FF
+	jump NZ, SIM_FAIL
+
+	input s1, LEDS_GPIO_ENABLE
+	compare s1, FF
+	jump NZ, SIM_FAIL
+	
+	input s1, LEDS_GPIO_DATA_I
+	compare s1, 00
+	jump NZ, SIM_FAIL
+	
+	input s1, LEDS_GPIO_DATA_O
+	compare s1, 00
+	jump NZ, SIM_FAIL			
+
+
+	load s2, 01
+	output s2, LEDS_GPIO_OE
+
+	load s2, 01
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, 01
+	output s2, LEDS_GPIO_DATA_I		
+
+	load s2, 02
+	output s2, LEDS_GPIO_OE
+
+	load s2, 02
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, 02
+	output s2, LEDS_GPIO_DATA_I
+
+	load s2, 04
+	output s2, LEDS_GPIO_OE
+
+	load s2, 04
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, 04
+	output s2, LEDS_GPIO_DATA_I
+
+	load s2, 08
+	output s2, LEDS_GPIO_OE
+
+	load s2, 08
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, 08
+	output s2, LEDS_GPIO_DATA_I
+
+	load s2, 10
+	output s2, LEDS_GPIO_OE
+
+	load s2, 10
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, 10
+	output s2, LEDS_GPIO_DATA_I		
+
+	load s2, 20
+	output s2, LEDS_GPIO_OE
+
+	load s2, 20
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, 20
+	output s2, LEDS_GPIO_DATA_I
+
+	load s2, 40
+	output s2, LEDS_GPIO_OE
+
+	load s2, 40
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, 40
+	output s2, LEDS_GPIO_DATA_I
+
+	load s2, 80
+	output s2, LEDS_GPIO_OE
+
+	load s2, 80
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, 80
+	output s2, LEDS_GPIO_DATA_I
+
+	load s2, FF
+	output s2, LEDS_GPIO_OE
+
+	load s2, FF
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, 00
+	output s2, LEDS_GPIO_DATA_I
+	
+	load s2, FF
+	output s2, LEDS_GPIO_OE
+
+	load s2, FF
+	output s2, LEDS_GPIO_ENABLE
+	
+	load s2, FF
+	output s2, LEDS_GPIO_DATA_I
+	
+	
+	jump SIM_PASS
+
+;;; ****************************************************************************
+;;; Interrupt Initialization -- Enable the interrupts
+;;; ****************************************************************************
+INT_init:
+	;; Turn on interrupts
+	ENABLE INTERRUPT
+	
+	return	
+
+;;; ****************************************************************************
+;;; SIM_PASS:	called when a simulation has passed, let the test bench know this
+;;;		through the SIM_STATUS register and sit here forever!
+;;; ****************************************************************************	
+SIM_PASS:
+	load s0, 40
+	output s0, SIM_STATUS
+	jump Z, SIM_PASS
+
+;;; ****************************************************************************
+;;; SIM_FAIL:	called when a simulation has failed, let the test bench know this
+;;;		through the SIM_STATUS register and sit here forever!
+;;; ****************************************************************************
+SIM_FAIL:
+	load s0, 80
+	output s0, SIM_STATUS
+	jump Z, SIM_FAIL
+		
+	
+;; *********************************************************************
+;; ISR is the real Interrupt Service Routine.  When the interrupt line
+;; goes high we come here
+;; *********************************************************************		
+ISR:
+	input s0, INT_STATUS
+	output s0, INT_CLEAR
+	
+	returni ENABLE	
+			
+	ADDRESS 3FF
+	jump ISR	
