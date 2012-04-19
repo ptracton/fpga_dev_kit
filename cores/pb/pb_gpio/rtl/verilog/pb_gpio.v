@@ -111,6 +111,6 @@ module pb_gpio(
      if (rst_i)
        int_o <= 1'b0;
      else
-       int_o = int_rising | int_falling;
+       int_o <= int_rising | int_falling;
    
 endmodule // pb_gpio

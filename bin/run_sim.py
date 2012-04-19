@@ -141,7 +141,8 @@ if __name__ == '__main__':
 
 
     ## Clean up the last run of the sim, do not want a mix of old and new data
-    Sim.clean_sim()
+    if not opts.ncverilog:
+        Sim.clean_sim()
     
     ## Create the simulation directory, and put all needed files in it
     Sim.generate_sim_files()

@@ -57,11 +57,12 @@ class ncverilog(sim_tool.sim_tool):
 
         ## attempt to make the directory to run the simulation.  if we fail to make it for
         ## whatever reason, we terminate the sim right here
-        try:
-            os.mkdir(self.sim_dir)
-        except:
-            print "Failed to make " + self.sim_dir
-            sys.exit(1)
+        if not os.path.exists(self.sim_dir):
+            try:
+                os.mkdir(self.sim_dir)
+            except:
+                print "Failed to make " + self.sim_dir
+                sys.exit(1)
 
         ##
         ## If we are doing some kind of SOC with a CPU and FW, build the firmware
