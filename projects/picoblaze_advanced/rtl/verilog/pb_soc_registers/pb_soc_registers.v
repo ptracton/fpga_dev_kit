@@ -130,7 +130,8 @@ module pb_soc_registers(
 	      `INT_MASK         : data_o <= int_mask;
 	      `INT_STATUS       : data_o <= interrupts;
 	      `INT_CLEAR        : data_o <= int_clear;
-	    	      	     
+	    	      
+	    `LEDS : data_o <= leds;	    
 	      `SWITCHES_GPIO_ENABLE : data_o <= switches_gpio_enable;
 	      `SWITCHES_GPIO_DATA_O : data_o <= switches_gpio_data_o;	    
 	    	    

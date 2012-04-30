@@ -36,7 +36,7 @@
 	namereg sD, uart_rx_reg
 	namereg sE, interrupt_byte
 	namereg sF, task_byte
-	
+
 ;; *********************************************************************
 ;; Start is the beginning of the program, at POR we come here.
 ;; *********************************************************************
@@ -44,87 +44,42 @@
 Start:
 	load s0, 01
 	output s0, SIM_STATUS
-	
+
 	;; 
 	;; POR Value testing
 	;; 
-	input s1, LEDS
-	compare s1, 00
-	jump NZ, SIM_FAIL
+	input s1, SWITCHES_GPIO_ENABLE
+	compare s1, FF
+	jump NZ, SIM_FAIL	
 
-	;;
-	;; Assert and check each bit
-	;; 
-	load s2, 01
-	output s2, LEDS
-
-	input s1, LEDS
-	compare s1, 01
-	jump NZ, SIM_FAIL
-	
-	load s2, 02
-	output s2, LEDS
-
-	input s1, LEDS
-	compare s1, 02
-	jump NZ, SIM_FAIL
-	
-	load s2, 04
-	output s2, LEDS
-	
-	input s1, LEDS
-	compare s1, 04
-	jump NZ, SIM_FAIL
-		
-	load s2, 08
-	output s2, LEDS
-
-	input s1, LEDS
-	compare s1, 08
-	jump NZ, SIM_FAIL
-	
-	load s2, 10
-	output s2, LEDS
-
-	input s1, LEDS
-	compare s1, 10
-	jump NZ, SIM_FAIL
-	
-	load s2, 20
-	output s2, LEDS
-
-	input s1, LEDS
-	compare s1, 20
-	jump NZ, SIM_FAIL
-	
-	load s2, 40
-	output s2, LEDS
-
-	input s1, LEDS
-	compare s1, 40
-	jump NZ, SIM_FAIL
-	
-	load s2, 80
-	output s2, LEDS
-
-	input s1, LEDS
-	compare s1, 80
-	jump NZ, SIM_FAIL
-	
-	load s2, 00
-	output s2, LEDS
-
-	input s1, LEDS
+	input s1, SWITCHES_GPIO_DATA_O
 	compare s1, 00
 	jump NZ, SIM_FAIL	
 
-	load s2, FF
-	output s2, LEDS
-
-	input s1, LEDS
-	compare s1, FF
-	jump NZ, SIM_FAIL
+	;;
+	;; Check each bit for a rising and falling interrupt
+	;;
+	load interrupt_byte, 00
 	
+	load s0, 01
+	output s0, SWITCHES_GPIO_ENABLE
+	
+	load s0, 03
+	output s0, SIM_STATUS
+BIT_0R:		
+	compare interrupt_byte, 01
+	jump NZ, BIT_0R
+
+	load interrupt_byte, 00
+
+	
+	load s0, 01
+	output s0, SIM_STATUS
+
+BIT_0F:	
+	compare interrupt_byte, 01
+	jump NZ, BIT_0R
+			
 	
 	jump SIM_PASS
 
@@ -163,8 +118,10 @@ SIM_FAIL:
 ISR:
 	input s0, INT_STATUS
 	output s0, INT_CLEAR
+
+	input interrupt_byte, SWITCHES_GPIO_DATA_O	
 	
 	returni ENABLE	
 			
 	ADDRESS 3FF
-	jump ISR	
+	jump ISR		

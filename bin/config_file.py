@@ -67,7 +67,11 @@ class config_file:
             print "FPGA CORES IS NOT DEFINED!  Terminate Program\n"
             sys.exit(1)
 
-        self.parse_file()
+        self.config_files = []
+        self.config_files.append(self.root+"configurations/"+self.file_name)
+
+        for i in self.config_files:
+            self.parse_file(i)
         
         return
 
@@ -83,11 +87,9 @@ class config_file:
     #
     #
     ############################################################################    
-    def parse_file(self):
+    def parse_file(self, cfg_file):
         '''
         '''
-
-        cfg_file = self.root+"configurations/"+self.file_name
 
         if self.opts.debug:
             print "ROOT: " + self.root
@@ -101,7 +103,7 @@ class config_file:
             f = open(cfg_file)
             lines = f.readlines()
             f.close()
-            print "Parsing File: ", self.file_name
+            print "Parsing File: ", cfg_file
             
         for i in lines:
             if i[0] != "#":
@@ -276,7 +278,17 @@ class config_file:
                 asic_synthesis = re.search('^ASIC_SYNTHESIS:(.*)', i)
                 if asic_synthesis:
                     print "Asic Synthesis = " + asic_synthesis.group(1).lstrip()
-                    self.asic.synthesis_files.append(asic_synthesis.group(1).lstrip())                  
+                    self.asic.synthesis_files.append(asic_synthesis.group(1).lstrip())
+
+                core_config_file = re.search('^CORE_CONFIG_FILE:(.*)', i)
+                if core_config_file:
+                    print "Core Config File = " + core_config_file.group(1).lstrip()
+                    self.config_files.append(self.fpga_cores+"/"+core_config_file.group(1).lstrip())
+
+                config_file = re.search('^CONFIG_FILE:(.*)', i)
+                if config_file:
+                    print "Config File = " + config_file.group(1).lstrip()
+                    self.config_files.append(self.root+"configurations/"+config_file.group(1).lstrip())                     
                     
         return
 

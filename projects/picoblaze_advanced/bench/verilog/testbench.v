@@ -106,17 +106,14 @@ module testbench;
    //
    // DUT to test
    //   
-   wire [7:0]  switches_tb;
-   reg [7:0]   switches_reg;   
+   reg [7:0]   switches_tb;
    wire [7:0]  leds_tb;
-
+   
    initial
      begin
-	switches_reg <= 8'h00;	
+	switches_tb <= 8'h00;	
      end
 
-   assign switches_tb = switches_reg;   
-   
    picoblaze_advanced dut(
 			  .clk_pad(clk_tb),
 			  .rst_pad(reset_tb),

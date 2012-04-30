@@ -41,7 +41,7 @@ BUILD_FPGA = build_fpga.py
 all: $(BITGEN_OUTPUT) 
 
 $(PRJ_FILE):
-	$(BUILD_FPGA) -x 
+	$(BUILD_FPGA) -x -f nexys2.cfg
 
 $(SYNTHESIS_OUTPUT): $(PRJ_FILE) 
 	$(RM) ./xst
