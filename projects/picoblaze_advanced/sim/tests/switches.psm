@@ -60,6 +60,9 @@ Start:
 	;; Check each bit for a rising and falling interrupt
 	;;
 	load interrupt_byte, 00
+
+	load s0, FB
+	output s0, INT_MASK  
 	
 	load s0, 01
 	output s0, SWITCHES_GPIO_ENABLE
@@ -119,8 +122,7 @@ ISR:
 	input s0, INT_STATUS
 	output s0, INT_CLEAR
 
-	input interrupt_byte, SWITCHES_GPIO_DATA_O	
-	
+	input interrupt_byte, SWITCHES_GPIO_DATA_O		
 	returni ENABLE	
 			
 	ADDRESS 3FF
