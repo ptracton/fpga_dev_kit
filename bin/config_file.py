@@ -68,7 +68,8 @@ class config_file:
             sys.exit(1)
 
         self.config_files = []
-        self.config_files.append(self.root+"configurations/"+self.file_name)
+#        self.config_files.append(self.root+"configurations/"+self.file_name)
+        self.config_files.append(self.file_name)
 
         for i in self.config_files:
             self.parse_file(i)

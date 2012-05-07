@@ -42,7 +42,7 @@ if __name__ == '__main__':
     ## Configuration file and root path in relation to where the simulations run from
     ##
     parser.add_option("-r", "--root",     dest="root",     action='store', default="../../../", help="The root path")
-    parser.add_option("-f", "--cfg_file", dest="cfg_file", action='store', default="fpga.cfg",     help="The configuration file to use")
+    parser.add_option("-f", "--cfg_file", dest="cfg_file", action='store', default="../../../configurations/fpga.cfg",     help="The configuration file to use")
 
     ##
     ## Technologies: Altera, Xilinx or "ASIC" which is just generic verilog RTL and not tech specific

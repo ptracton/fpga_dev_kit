@@ -18,4 +18,4 @@ $(TARGET):
 	$(RM) ROM* *.log *~
 
 clean:
-	$(RM) ROM* *.log *~
+	$(RM) ROM* *.log *~ prog_rom*
