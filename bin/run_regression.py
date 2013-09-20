@@ -82,8 +82,8 @@ if __name__ == '__main__':
     ## Display the options passed in if you use the -d switch
     ##
     if opts.debug:
-        print opts
-        print args
+        print(opts)
+        print(args)
 
     ##
     ## A quick and easy way to run all of the simulations without having to enter each individual switch
@@ -114,7 +114,7 @@ if __name__ == '__main__':
     ## Must choose at least 1 tool to use for regression
     ## 
     if not opts.modelsim and not opts.isim and not opts.icarus and not opts.cver and not opts.ncverilog:
-        print "Must choose at least 1 tool, Modelsim, ISIM, Icarus, CVER or NCVerilog"
+        print("Must choose at least 1 tool, Modelsim, ISIM, Icarus, CVER or NCVerilog")
         sys.exit(1)        
 
     ##
@@ -142,7 +142,7 @@ if __name__ == '__main__':
     ## if no technology is specified, let's assume you meant to specify them all
     ## 
     if not opts.asic and not opts.xilinx and not opts.altera:
-        print "Must choose at least 1 technology, ASIC, Xilinx or Altera"
+        print("Must choose at least 1 technology, ASIC, Xilinx or Altera")
         sys.exit(1)
         
     ##
@@ -166,7 +166,7 @@ if __name__ == '__main__':
     test_list = []
     test_dir = opts.root+"tests/"
     if opts.test_list == None:
-        print "No test list specified just run all of them"
+        print("No test list specified just run all of them")
         file_list = os.listdir(test_dir)
         for i in file_list:
             fname, fext = os.path.splitext(i)
@@ -175,10 +175,10 @@ if __name__ == '__main__':
     else:
         test_file = test_dir+opts.test_list
         if not os.path.exists(test_file):
-            print "Test List File is missing ",test_file
+            print("Test List File is missing ",test_file)
             sys.exit(1)
         else:
-            print "Found file", test_file
+            print("Found file", test_file)
             f = open(test_file)
             lines = f.readlines()
             f.close()
@@ -239,10 +239,10 @@ if __name__ == '__main__':
     ##
     ## All done, terminate program
     ##
-    print("\n\nTOTAL TESTS: %d\n" % tests_total)
-    print("TOTAL PASS: %d %f\n" % (tests_pass, percent_pass))
-    print("TOTAL FAIL: %d %f\n" % (tests_fail, percent_fail))    
-    print "\n\nRegression All Done!\n"
+    print(("\n\nTOTAL TESTS: %d\n" % tests_total))
+    print(("TOTAL PASS: %d %f\n" % (tests_pass, percent_pass)))
+    print(("TOTAL FAIL: %d %f\n" % (tests_fail, percent_fail)))    
+    print("\n\nRegression All Done!\n")
 
     if opts.coverage:
         dirs = os.walk('.').next()[1]
@@ -251,7 +251,7 @@ if __name__ == '__main__':
             string += i+"/score_output.txt "
 
         command = "covered merge "+ string + "-o regression_merge.txt"
-        print command
+        print(command)
         os.system(command)
 
         command = "covered report -o regression_coverage.txt regression_merge.txt"

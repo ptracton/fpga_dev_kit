@@ -50,7 +50,7 @@ class icarus(sim_tool.sim_tool):
         This function will generate the self.sim_file_list contents.  These contents are then fed
         to the simulation tool to run the sim
         '''
-        print "\nICARUS Generate SIM Files"
+        print("\nICARUS Generate SIM Files")
 
         ## update the root since we are going to CD one more level down
         root = self.cfg.root+"../"
@@ -60,7 +60,7 @@ class icarus(sim_tool.sim_tool):
         try:
             os.mkdir(self.sim_dir)
         except:
-            print "Failed to make " + self.sim_dir
+            print("Failed to make " + self.sim_dir)
             sys.exit(1)
 
         ##
@@ -68,7 +68,7 @@ class icarus(sim_tool.sim_tool):
         ##
         self.build_firmware()
         verilog_files = self.find_verilog_files(self.sim_dir)
-        print verilog_files
+        print(verilog_files)
 
 
         ## copy the test verilog file to the test run directory and rename it stimulus.v
@@ -81,7 +81,7 @@ class icarus(sim_tool.sim_tool):
         f = open(self.sim_dir+"/"+self.sim_file_list, "w")        
         
         if self.opts.xilinx:
-            print "ICARUS XILINX\n"
+            print("ICARUS XILINX\n")
             self.switch.append("XILINX")
             f.write("+libext+.v\n")            
             xilinx = os.getenv("XILINX")
@@ -98,7 +98,7 @@ class icarus(sim_tool.sim_tool):
                 f.write(root+i.strip("'") +"\n")            
 
         if self.opts.altera:
-            print "ICARUS ALTERA\n"
+            print("ICARUS ALTERA\n")
             altera = os.getenv("ALTERA")
             modelsim = os.getenv("MODELSIM")
 
@@ -154,7 +154,7 @@ class icarus(sim_tool.sim_tool):
     def run_simulation(self):
         '''
         '''
-        print "\nISIM Run Simulation"
+        print("\nISIM Run Simulation")
 
         ## switch into the simulation directory, this is why we added another layer to the root variable
         os.chdir(self.sim_dir)
@@ -170,13 +170,13 @@ class icarus(sim_tool.sim_tool):
         switch_string = ""
         for i in self.switch:
             switch_string += " -D"+str(i).strip("[']")        
-        print "ICARUS SWITCHES: " + switch_string
+        print("ICARUS SWITCHES: " + switch_string)
 
         ##
         ## Create the executable for the simulation, icarus generates a program to run as the simulation
         ##
         command = verilog_executable + " -Wtimescale "+ switch_string  +" -o " + self.executable + " -f " + self.sim_file_list
-        print "Icarus Command: " + command
+        print("Icarus Command: " + command)
         os.system(command)
 
         ##
@@ -185,8 +185,8 @@ class icarus(sim_tool.sim_tool):
         if os.path.exists(self.executable):
             os.system("vvp -l "+self.sim_log +" ./"+self.executable)
         else:
-            print "Failed to make "+self.executable
-            print "Terminate simulation"
+            print("Failed to make "+self.executable)
+            print("Terminate simulation")
             sys.exit(1)
 
         ##
@@ -194,17 +194,17 @@ class icarus(sim_tool.sim_tool):
         ## in the right location
         ##
         if self.opts.gui:
-            print "RUNNING GUI GTKWAVE " + os.getcwd()
+            print("RUNNING GUI GTKWAVE " + os.getcwd())
             gui_wave = self.cfg.root+"/tests/"+self.test_name+".sav"
             if not os.path.exists(gui_wave):
-                print gui_wave + " FILE NOT FOUND"
+                print(gui_wave + " FILE NOT FOUND")
                 gui_wave = ""
                 
-            print "WAVE FILE: " + gui_wave
+            print("WAVE FILE: " + gui_wave)
                        
             gui_executable = self.get_executable("gtkwave")
             command = gui_executable +" dump.vcd " + gui_wave
-            print command
+            print(command)
             os.system(command)            
 
         ## go back up to the level we started at

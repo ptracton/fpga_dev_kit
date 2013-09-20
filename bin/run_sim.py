@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 ################################################################################
 #
@@ -83,8 +83,8 @@ if __name__ == '__main__':
     ## Display the options passed in if you use the -d switch
     ##
     if opts.debug:
-        print opts
-        print args
+        print(opts)
+        print(args)
 
 
     ##
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     ## and the test will fail to run
     ##
     if args == "":
-        print "Must specify a test to run!"
+        print("Must specify a test to run!")
         sys.exit(1)
 
     ##
@@ -111,8 +111,8 @@ if __name__ == '__main__':
         tech_enabled = tech_enabled +1
 
     if tech_enabled != 1:
-        print "Selected too many or too few technologies selected, you can only have 1"
-        print opts
+        print("Selected too many or too few technologies selected, you can only have 1")
+        print(opts)
         sys.exit(1)
 
     ##
@@ -160,5 +160,5 @@ if __name__ == '__main__':
     ##
     ## All done, terminate program
     ##
-    print "\n\nAll Done!\n"    
+    print("\n\nAll Done!\n")    
     sys.exit(0)

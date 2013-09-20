@@ -42,20 +42,20 @@ def safe_mkdir(path):
     try:
         os.makedirs(path)
     except:
-        print "Failed to make " + path
+        print("Failed to make " + path)
         sys.exit(1)
     return
 
 def list_to_dirs(dirs):
     
     for i in dirs:
-        print i.strip("[']")
+        print(i.strip("[']"))
         safe_mkdir(i.strip("[']"))
     return
 
 def fpga_project(project_name):
 
-    print "\n\nCreating FPGA Project: " + project_name
+    print("\n\nCreating FPGA Project: " + project_name)
 
     ##
     ## DIR STRUCTURE:  project_name
@@ -84,7 +84,7 @@ def fpga_project(project_name):
     ##
 
     if (os.path.exists(project_name)):
-        print "Project: "+project_name+" already exists"
+        print("Project: "+project_name+" already exists")
         sys.exit(1)
 
     project_dirs = []
@@ -108,7 +108,7 @@ def fpga_project(project_name):
     src_dir = os.path.realpath(__file__)
     src_dir = src_dir.split("/")[:-1]
     src_dir = '/'.join(map(str, src_dir))
-    print src_dir
+    print(src_dir)
 
     
     list_to_dirs(project_dirs)
@@ -145,15 +145,15 @@ if __name__ == '__main__':
     ## Display the options passed in if you use the -d switch
     ##
     if opts.debug:
-        print opts
-        print args
+        print(opts)
+        print(args)
 
     ##
     ## Make sure the user specified a test case to run otherwise there is no stimulus file to copy
     ## and the test will fail to run
     ##
     if not args:
-        print "Must specify a project name!"
+        print("Must specify a project name!")
         sys.exit(1)
 
     project_name = str(args[0]).strip("[']")
@@ -163,5 +163,5 @@ if __name__ == '__main__':
     ##
     ## All done, terminate program
     ##
-    print "\n\nAll Done!\n"    
+    print("\n\nAll Done!\n")    
     sys.exit(0)

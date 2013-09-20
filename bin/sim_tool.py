@@ -85,26 +85,26 @@ class sim_tool:
         '''
         Remove the directory with the results from the last time we ran this simulation
         '''
-        print "Cleaning Sim " + self.sim_dir
+        print("Cleaning Sim " + self.sim_dir)
 
         command = "rm -rf " + self.sim_dir
-        print command
+        print(command)
 
         ## try to remove the old directory, if it is not there, os.system throws an exception
         ## so we catch it and move on
         try:
             os.system("rm -rf " + self.sim_dir)
         except:
-            print self.sim_dir+" is already gone!"
+            print(self.sim_dir+" is already gone!")
 
     ################################################################################
     def generate_sim_files(self):
-        print "OVER RIDE THIS FUNCTION!"
+        print("OVER RIDE THIS FUNCTION!")
         return
     
     ################################################################################
     def run_simulation(self):
-        print "OVER RIDE THIS FUNCTION!"
+        print("OVER RIDE THIS FUNCTION!")
         return
 
     ################################################################################
@@ -120,7 +120,7 @@ class sim_tool:
         os.chdir(path)
         for files in glob.glob("*.v"):
             if (files != "stimulus.v"):
-                print os.getcwd()+"/"+files
+                print(os.getcwd()+"/"+files)
                 verilog_files.append(os.getcwd()+"/"+files)
 
         os.chdir("..")
@@ -128,10 +128,10 @@ class sim_tool:
 
     ################################################################################
     def build_firmware(self):
-        print "Building Firmware"
+        print("Building Firmware")
         
         if (os.path.exists("../src/Makefile")):
-            print "Found Makefile, build firmware"
+            print("Found Makefile, build firmware")
             make_options = "TEST_NAME="+self.test_name+" TECHNOLOGY="+self.fpga_type
 
 
@@ -154,12 +154,12 @@ class sim_tool:
             make_options += " SIMULATOR="+simulator
 
             command = "make -f ../src/Makefile "+make_options
-            print command
+            print(command)
             os.system(command)
             
             self.built_firmware = True
         else:
-            print "No Firmware to build"
+            print("No Firmware to build")
             self.built_firmware = False
             
         return
@@ -171,7 +171,7 @@ class sim_tool:
         try:
             f = open(self.sim_dir+"/score.f", 'w')
         except:
-            print "Failed to open score.f file"
+            print("Failed to open score.f file")
             sys.exit(1)
 
         f.write("-i "+self.cfg.testbench+"."+self.cfg.testbench_instance+"\n")
@@ -181,7 +181,7 @@ class sim_tool:
         f.write("-I "+self.sim_dir+"\n")
         f.write("-y "+self.sim_dir+"\n")
 
-        print self.opts
+        print(self.opts)
 
         if self.opts.asic:
             for i in self.cfg.asic.include_dirs:
@@ -247,7 +247,7 @@ class sim_tool:
         try:
             f = open(self.sim_dir+"/report.f", 'w')
         except:
-            print "Failed to open score.f file"
+            print("Failed to open score.f file")
             sys.exit(1)
 
         f.write("-m lctfram \n")
@@ -263,12 +263,12 @@ class sim_tool:
 
         self.create_score_file()
         command = covered + " score -f "+self.sim_dir+"/score.f"
-        print command
+        print(command)
         os.system(command)
 
         self.create_report_file()
         command = covered + " report -f "+self.sim_dir+"/report.f "+self.sim_dir+"/score_output.txt"
-        print command
+        print(command)
         os.system(command)        
         
         return

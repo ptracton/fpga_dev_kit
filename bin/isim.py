@@ -51,7 +51,7 @@ class isim(sim_tool.sim_tool):
         This function will generate the self.sim_file_list contents.  These contents are then fed
         to the simulation tool to run the sim
         '''
-        print "\nISIM Generate SIM Files"
+        print("\nISIM Generate SIM Files")
 
         ## update the root since we are going to CD one more level down
         root = self.cfg.root+"../"
@@ -61,7 +61,7 @@ class isim(sim_tool.sim_tool):
         try:
             os.mkdir(self.sim_dir)
         except:
-            print "Failed to make " + self.sim_dir
+            print("Failed to make " + self.sim_dir)
             sys.exit(1)
 
 
@@ -70,7 +70,7 @@ class isim(sim_tool.sim_tool):
         ##
         self.build_firmware()
         verilog_files = self.find_verilog_files(self.sim_dir)
-        print verilog_files
+        print(verilog_files)
 
         ## copy the test verilog file to the test run directory and rename it stimulus.v
         ## we rename the file because our testbench includes stimulus.v this will allow us
@@ -184,11 +184,11 @@ class isim(sim_tool.sim_tool):
     def run_simulation(self):
         '''
         '''
-        print "\nISIM Run Simulation"
+        print("\nISIM Run Simulation")
 
         ## switch into the simulation directory, this is why we added another layer to the root variable
         os.chdir(self.sim_dir)
-        print os.getcwd()
+        print(os.getcwd())
         
         ##
         ## Get the machine type, 64 and 32 bit machine use different libraries
@@ -207,14 +207,14 @@ class isim(sim_tool.sim_tool):
         try:
             xilinx = os.environ['XILINX']
         except:
-            print "XILINX Environment variable is not defined.  Terminate program\n"
+            print("XILINX Environment variable is not defined.  Terminate program\n")
             sys.exit(1)
             
         xilinx += "/../"
         common = xilinx+"common/lib/"+lin
         ise = xilinx+"ISE/lib/"+lin
         edk = xilinx+"EDK/lib/"+lin
-        print xilinx
+        print(xilinx)
         os.environ['LD_LIBRARY_PATH'] = common + " " + ise + " " + edk +" " 
         verilog_executable = self.get_executable("fuse")
 
@@ -222,7 +222,7 @@ class isim(sim_tool.sim_tool):
         switch_string = ""
         for i in self.switch:
             switch_string += " -d "+str(i).strip("[']") 
-        print "ISIM SWITCHES: " + switch_string
+        print("ISIM SWITCHES: " + switch_string)
 
         ##
         ## These are a few fields that need updating based on our target.  We can run ALTERA designs in Xilinx ISIM
@@ -241,7 +241,7 @@ class isim(sim_tool.sim_tool):
             
         ## This runs the fuse command.  In Isim that will generate an .exe file that actually runs the sim
         command = verilog_executable+" " +glbl+ " work."+self.cfg.testbench+" --prj "+self.sim_file_list +" -o "+ self.executable+ " "+ libs+" "+switch_string+" \n"
-        print command
+        print(command)
         os.system(command)
 
         ##
@@ -261,11 +261,11 @@ class isim(sim_tool.sim_tool):
             ## This runs the simulation.....                
             command = "./"+self.executable+" -tclbatch ../../src/isim.tcl "+gui+ timing +" -log "+ self.sim_log
             
-            print "EXECUTE: "+ command
+            print("EXECUTE: "+ command)
             os.system(command)
         else:
-            print "Failed to make "+self.executable
-            print "Terminate simulation"
+            print("Failed to make "+self.executable)
+            print("Terminate simulation")
             sys.exit(1)
             
         ## go back up to the level we started at

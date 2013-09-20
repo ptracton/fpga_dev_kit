@@ -61,31 +61,31 @@ class synth_tool:
         '''
         Remove the directory with the results from the last time we ran this simulation
         '''
-        print "Cleaning Sim " + self.sim_dir
+        print("Cleaning Sim " + self.sim_dir)
 
         command = "rm -rf " + self.sim_dir
-        print command
+        print(command)
 
         ## try to remove the old directory, if it is not there, os.system throws an exception
         ## so we catch it and move on
         try:
             os.system("rm -rf " + self.sim_dir)
         except:
-            print self.sim_dir+" is already gone!"
+            print(self.sim_dir+" is already gone!")
 
     ################################################################################
     def synthesis(self):
-        print "OVER RIDE THIS FUNCTION!"
+        print("OVER RIDE THIS FUNCTION!")
         return
     
     ################################################################################
     def place_and_route(self):
-        print "OVER RIDE THIS FUNCTION!"
+        print("OVER RIDE THIS FUNCTION!")
         return
 
     ################################################################################
     def generate_file(self):
-        print "OVER RIDE THIS FUNCTION!"
+        print("OVER RIDE THIS FUNCTION!")
         return    
 
  

@@ -53,7 +53,7 @@ class modelsim(sim_tool.sim_tool):
         This function will generate the self.sim_file_list contents.  These contents are then fed
         to the simulation tool to run the sim
         '''
-        print "\nMODELSIM Generate SIM Files"
+        print("\nMODELSIM Generate SIM Files")
 
         ## update the root since we are going to CD one more level down
         root = self.cfg.root+"../"
@@ -63,7 +63,7 @@ class modelsim(sim_tool.sim_tool):
         try:
             os.mkdir(self.sim_dir)
         except:
-            print "Failed to make " + self.sim_dir
+            print("Failed to make " + self.sim_dir)
             sys.exit(1)
 
         ##
@@ -71,7 +71,7 @@ class modelsim(sim_tool.sim_tool):
         ##
         self.build_firmware()
         verilog_files = self.find_verilog_files(self.sim_dir)
-        print verilog_files
+        print(verilog_files)
 
         ## copy the test verilog file to the test run directory and rename it stimulus.v
         ## we rename the file because our testbench includes stimulus.v this will allow us
@@ -93,7 +93,7 @@ class modelsim(sim_tool.sim_tool):
         for i in self.cfg.core_include_dirs:
             include_string += "+incdir+"+i.strip("['],")+" "
 
-        print include_string
+        print(include_string)
 
         switch_string = ""
         for i in self.switch:
@@ -183,12 +183,12 @@ class modelsim(sim_tool.sim_tool):
 
         gui = self.test_path+"/"+self.test_name+".do"
         if self.opts.gui:
-            print "GUI" + gui
+            print("GUI" + gui)
             if os.path.exists(gui):
-                print "USING: " + gui
+                print("USING: " + gui)
                 f.write("do ../"+gui+"\n")
             else:
-                print gui + " does not exist"
+                print(gui + " does not exist")
         
         f.write("run -all\n\n")        
         f.close()        
@@ -200,7 +200,7 @@ class modelsim(sim_tool.sim_tool):
     def run_simulation(self):
         '''
         '''
-        print "\nMODELSIM Run Simulation"
+        print("\nMODELSIM Run Simulation")
 
         ## switch into the simulation directory, this is why we added another layer to the root variable
         os.chdir(self.sim_dir)
@@ -218,14 +218,14 @@ class modelsim(sim_tool.sim_tool):
         vlog = self.get_executable("vlog")
         vsim = self.get_executable("vsim")
         vlib = self.get_executable("vlib")
-        print "PATH: " + vlog
-        print "PATH: " + vsim
-        print "PATH: " + vlib
+        print("PATH: " + vlog)
+        print("PATH: " + vsim)
+        print("PATH: " + vlib)
 
         switch_string = ""
         for i in self.switch:
             switch_string += " +define+"+str(i).strip("[']")         
-        print "MODELSIM SWITCHES: " + switch_string
+        print("MODELSIM SWITCHES: " + switch_string)
 
         if os.path.exists("work"):
             os.removedir("work")        

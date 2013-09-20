@@ -50,7 +50,7 @@ class ncverilog(sim_tool.sim_tool):
         This function will generate the self.sim_file_list contents.  These contents are then fed
         to the simulation tool to run the sim
         '''
-        print "\nNCVERILOG Generate SIM Files"
+        print("\nNCVERILOG Generate SIM Files")
 
         ## update the root since we are going to CD one more level down
         root = self.cfg.root+"../"
@@ -61,7 +61,7 @@ class ncverilog(sim_tool.sim_tool):
             try:
                 os.mkdir(self.sim_dir)
             except:
-                print "Failed to make " + self.sim_dir
+                print("Failed to make " + self.sim_dir)
                 sys.exit(1)
 
         ##
@@ -69,7 +69,7 @@ class ncverilog(sim_tool.sim_tool):
         ##
         self.build_firmware()
         verilog_files = self.find_verilog_files(self.sim_dir)
-        print verilog_files
+        print(verilog_files)
 
         ## copy the test verilog file to the test run directory and rename it stimulus.v
         ## we rename the file because our testbench includes stimulus.v this will allow us
@@ -85,7 +85,7 @@ class ncverilog(sim_tool.sim_tool):
         f.write("+libext+.v+\n")
 
         if self.opts.xilinx:
-            print "NCVERILOG XILINX\n"
+            print("NCVERILOG XILINX\n")
             f.write("+libext+.v\n")
             ## append a switch so the sim has a define for XILINX
             self.switch.append("XILINX")
@@ -103,7 +103,7 @@ class ncverilog(sim_tool.sim_tool):
                 f.write(root+i.strip("'") +"\n")            
 
         if self.opts.altera:
-            print "NCVERILOG ALTERA\n"
+            print("NCVERILOG ALTERA\n")
             ## add a define for ALTERA so the sims knows what it is running
             self.switch.append("ALTERA")
             
@@ -163,7 +163,7 @@ class ncverilog(sim_tool.sim_tool):
     def run_simulation(self):
         '''
         '''
-        print "\nNCVERILOG Run Simulation"
+        print("\nNCVERILOG Run Simulation")
 
         ## switch into the simulation directory, this is why we added another layer to the root variable
         os.chdir(self.sim_dir)
@@ -179,13 +179,13 @@ class ncverilog(sim_tool.sim_tool):
         switch_string = ""
         for i in self.switch:
             switch_string += " +define+"+str(i).strip("[']")        
-        print "NCVERILOG SWITCHES: " + switch_string
+        print("NCVERILOG SWITCHES: " + switch_string)
 
         ##
         ## Create the executable for the simulation, ncverilog generates a program to run as the simulation
         ##
         command = verilog_executable + " "+ switch_string  +" -f " + self.sim_file_list + " -l " + self.sim_log + " +define+NCVERILOG +access+rwc "
-        print "NCVerilog Command: " + command
+        print("NCVerilog Command: " + command)
         os.system(command)
 
         ##
@@ -193,18 +193,18 @@ class ncverilog(sim_tool.sim_tool):
         ## in the right location
         ##
         if self.opts.gui:
-            print "RUNNING GUI Simvision"
+            print("RUNNING GUI Simvision")
             gui_wave = self.cfg.root+"/tests/"+self.test_name+".sv"
             if not os.path.exists(gui_wave):
-                print gui_wave + " FILE NOT FOUND"
+                print(gui_wave + " FILE NOT FOUND")
                 gui_wave = ""
                 
-            print "WAVE FILE: " + gui_wave
+            print("WAVE FILE: " + gui_wave)
                        
             gui_executable = self.get_executable("simvision")
             command = gui_executable +" -input " + gui_wave
             args = " -input " + gui_wave
-            print command
+            print(command)
 #            os.spawnlp(os.P_NOWAIT, gui_executable, args)
             os.system(command)
 

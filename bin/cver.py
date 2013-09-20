@@ -50,7 +50,7 @@ class cver(sim_tool.sim_tool):
         This function will generate the self.sim_file_list contents.  These contents are then fed
         to the simulation tool to run the sim
         '''
-        print "\nCVER Generate SIM Files"
+        print("\nCVER Generate SIM Files")
 
         ## update the root since we are going to CD one more level down
         root = self.cfg.root+"../"
@@ -60,7 +60,7 @@ class cver(sim_tool.sim_tool):
         try:
             os.mkdir(self.sim_dir)
         except:
-            print "Failed to make " + self.sim_dir
+            print("Failed to make " + self.sim_dir)
             sys.exit(1)
 
         ##
@@ -68,7 +68,7 @@ class cver(sim_tool.sim_tool):
         ##
         self.build_firmware()
         verilog_files = self.find_verilog_files(self.sim_dir)
-        print verilog_files
+        print(verilog_files)
 
         ## copy the test verilog file to the test run directory and rename it stimulus.v
         ## we rename the file because our testbench includes stimulus.v this will allow us
@@ -80,7 +80,7 @@ class cver(sim_tool.sim_tool):
         f = open(self.sim_dir+"/"+self.sim_file_list, "w")
 
         if self.opts.xilinx:
-            print "CVER XILINX\n"
+            print("CVER XILINX\n")
             f.write("+libext+.v\n")
             xilinx = os.getenv("XILINX")
             f.write("-y " + xilinx + "/verilog/src/unisims/\n")
@@ -96,7 +96,7 @@ class cver(sim_tool.sim_tool):
                 f.write(root+i.strip("'") +"\n")            
 
         if self.opts.altera:
-            print "CVER ALTERA\n"
+            print("CVER ALTERA\n")
             altera = os.getenv("ALTERA")
             modelsim = os.getenv("MODELSIM")
 
@@ -112,7 +112,7 @@ class cver(sim_tool.sim_tool):
                 f.write(root+i.strip("'") +"\n")
 
         if self.opts.asic:
-            print "CVER ASIC\n"
+            print("CVER ASIC\n")
             for i in self.cfg.asic.include_dirs:
                 f.write("+incdir+"+root+i+"\n")
 
@@ -151,7 +151,7 @@ class cver(sim_tool.sim_tool):
     def run_simulation(self):
         '''
         '''
-        print "\nISIM Run Simulation"
+        print("\nISIM Run Simulation")
 
         ## switch into the simulation directory, this is why we added another layer to the root variable
         os.chdir(self.sim_dir)
@@ -164,10 +164,10 @@ class cver(sim_tool.sim_tool):
         switch_string = ""
         for i in self.switch:
             switch_string += " +define+"+str(i).strip("[']")        
-        print "CVER SWITCHES: " + switch_string
+        print("CVER SWITCHES: " + switch_string)
 
         command = verilog_executable + " "+ switch_string +" -f " + self.sim_file_list +" -l " + self.sim_log
-        print command
+        print(command)
         os.system(command)
    
         ## go back up to the level we started at

@@ -64,8 +64,8 @@ if __name__ == '__main__':
     ## Display the options passed in if you use the -d switch
     ##
     if opts.debug:
-        print opts
-        print args
+        print(opts)
+        print(args)
 
     ##
     ## Create a simulation object, fill in the details
@@ -100,5 +100,5 @@ if __name__ == '__main__':
     ##
     ## All done, terminate program
     ##
-    print "\n\nAll Done!\n"    
+    print("\n\nAll Done!\n")    
     sys.exit(0)

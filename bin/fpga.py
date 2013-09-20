@@ -55,7 +55,7 @@ if __name__ == '__main__':
     '''
     '''
     f = fpga()
-    print f
+    print(f)
     help(f)
 
     
